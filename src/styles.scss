@@ -1,1 +1,10 @@
-/* You can add global styles to this file, and also import other style files */
+/* Importa Normalize.css */
+@import 'normalize.css/normalize.css';
+
+/* Importa Bootstrap */
+@import 'bootstrap/dist/css/bootstrap.min.css';
+
+/* Importa Material Icons */
+@import 'material-icons/iconfont/material-icons.css';
+
+@import '@mdi/font/css/materialdesignicons.min.css';
