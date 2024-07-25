@@ -1,0 +1,36 @@
+.navbar {
+    background-color: #041434;
+}
+
+/* Define as cores e o estilo padrão para os links */
+.custom-link {
+    color: white;
+    transition: color 0.4s;
+}
+
+/* Define o estilo do link ativo */
+.custom-link.active {
+    color: white !important; /* Cor do texto ativo */
+    background-color: #eb1c24; /* Cor de fundo ativo */
+    border-radius: 15px; /* Arredonda os cantos */
+}
+
+/* Define o estilo do link quando o mouse passa por cima */
+.custom-link:hover {
+    color: white !important; /* Cor do texto ativo */
+    background-color: #eb1c23f5; /* Cor de fundo ativo */
+    border-radius: 15px; /* Arredonda os cantos */
+}
+
+/* Estilizar o botão toggle */
+.custom-toggler {
+    border-color: #321631 !important;
+    background-color: #eb1c24;
+    padding: 5px;
+    border-radius: 8px;
+}
+
+/* Alterar a cor do ícone ao passar o mouse */
+.custom-toggler:hover {
+    background-color: #bd1a27;
+}
