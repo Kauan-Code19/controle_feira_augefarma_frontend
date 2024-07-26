@@ -1,0 +1,11 @@
+<div class="col-12">
+    <button type="submit" class="btn btn-secondary btn-lg w-100"
+        (click)="submit()"
+        [disabled]="disabled"
+        [ngClass]="getButtonClass()"
+    >
+
+        {{ getButtonText() }}
+
+    </button>
+</div>
