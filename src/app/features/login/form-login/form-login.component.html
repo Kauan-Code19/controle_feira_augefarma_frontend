@@ -1,7 +1,7 @@
 <form [formGroup]="inputsForm">
     <div class="form-floating mb-2 p-2">
         <input type="email" class="form-control p-2" id="input_email" placeholder="name@example.com" 
-        formControlName="login">
+        formControlName="email">
         <label for="input_email">Email</label>
       </div>
       <div class="form-floating mb-3 p-2">
@@ -9,5 +9,5 @@
         formControlName="password">
         <label for="input_password">Password</label>
       </div>
-      <button-send-data-administrators-component [disabled]="!inputsForm.valid" btn-text="Sing In"></button-send-data-administrators-component>
+      <button-send-data-administrators-component (click)="submit()" [disabled]="!inputsForm.valid" btn-text="Sing In"></button-send-data-administrators-component>
 </form>
