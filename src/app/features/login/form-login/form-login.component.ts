@@ -32,11 +32,20 @@ export class FormLoginComponent {
       this.authenticationService.login(this.inputsForm.value.email, this.inputsForm.value.password)
       .subscribe({
         next: (response: LoginResponse) => {
-          localStorage.setItem("token", response.token)
+          const token = response.token;
+          const expirationDate = this.decodeTokenExpiration(token);
+
+          localStorage.setItem("token", token)
+          localStorage.setItem("tokenExpiration", expirationDate.toString())
 
           this.router.navigateByUrl("/mapping")
         }
       })
     }
+  }
+
+  decodeTokenExpiration(token: string) : number {
+    const payload = JSON.parse(atob(token.split('.')[1]))
+    return payload.exp * 1000
   }
 }
