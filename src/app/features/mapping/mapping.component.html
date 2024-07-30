@@ -1,6 +1,6 @@
-<div class="container-fluid flex-grow-1">
-  <div class="d-flex justify-content-center my-4 p-2">
-    <div class="alert custom-alert text-center current-time" role="alert">
+<div class="container-fluid flex-grow-1 background">
+  <div class="d-flex justify-content-center p-2">
+    <div class="alert custom-alert text-center current-time my-5" role="alert">
         Current Date/Time: {{ currentDateTime }}
     </div>
   </div>
@@ -12,7 +12,7 @@
         <h2 class="text-center flex-grow-1 title p-1">Clients</h2>
         <div class="alert custom-alert mb-0" role="alert">Total: {{ clients.length }}</div>
       </div>
-      <div class="table-responsive">
+      <div class="table-responsive text-center">
         <table class="table custom-table-dark table-striped-columns table-bordered table-hover">
             <thead>
               <tr>
@@ -42,7 +42,7 @@
         <h2 class="text-center flex-grow-1 title p-1">Laboratories</h2>
         <div class="alert custom-alert mb-0" role="alert">Total: {{ laboratories.length }}</div>
       </div>
-      <div class="table-responsive">
+      <div class="table-responsive text-center">
         <table class="table custom-table-dark table-striped-columns table-bordered table-hover">
             <thead>
               <tr>

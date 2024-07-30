@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, NgZone, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, NgZone, OnDestroy, OnInit } from '@angular/core';
 import { ClientResponse } from '../../interfaces/client/client-response';
 import { LaboratoryResponse } from '../../interfaces/laboratory/laboratory-response';
 import { StompService } from '../../shared/services/socket/stomp.service';
@@ -17,11 +17,11 @@ export class MappingComponent implements OnInit, OnDestroy {
   clients: ClientResponse[] = [];
   laboratories: LaboratoryResponse[] = [];
   currentDateTime: string = new Date().toLocaleString();
-  private rafId: number | null = null;
+  private intervalId: any;
 
   private subscriptions: Subscription[] = [];
 
-  constructor(private stompService: StompService, private ngZone: NgZone) {}
+  constructor(private stompService: StompService, private ngZone: NgZone, private cdr: ChangeDetectorRef) {}
 
   ngOnInit(): void {
     this.subscriptions.push(
@@ -38,19 +38,21 @@ export class MappingComponent implements OnInit, OnDestroy {
 
     // Atualiza a data/hora atual a cada segundo
     this.ngZone.runOutsideAngular(() => {
-      this.updateDateTime();
+      this.intervalId = setInterval(() => {
+        this.updateDateTime();
+      }, 1000);
     });
   }
 
   private updateDateTime(): void {
     this.currentDateTime = new Date().toLocaleString();
-    this.rafId = requestAnimationFrame(() => this.updateDateTime());
+    this.cdr.detectChanges();
   }
 
   ngOnDestroy(): void {
     this.subscriptions.forEach(sub => sub.unsubscribe());
-    if (this.rafId) {
-      cancelAnimationFrame(this.rafId);
+    if (this.intervalId) {
+      clearInterval(this.intervalId);
     }
   }
 
