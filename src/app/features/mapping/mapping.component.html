@@ -1,0 +1,74 @@
+<div class="container-fluid flex-grow-1">
+  <div class="d-flex justify-content-center my-4 p-2">
+    <div class="alert custom-alert text-center current-time" role="alert">
+        Current Date/Time: {{ currentDateTime }}
+    </div>
+  </div>
+
+  <div class="d-flex flex-column align-items-center p-1">
+    <!-- Seção de Clientes -->
+    <div class="col-12 col-md-8 mb-4 p-2">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-2 p-1">
+        <h2 class="text-center flex-grow-1 title p-1">Clients</h2>
+        <div class="alert custom-alert mb-0" role="alert">Total: {{ clients.length }}</div>
+      </div>
+      <div class="table-responsive">
+        <table class="table custom-table-dark table-striped-columns table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>CPF</th>
+                <th>CNPJ</th>
+                <th>Corporate Reason</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let client of clients">
+                <td>{{ client.id }}</td>
+                <td>{{ client.fullName }}</td>
+                <td>{{ client.cpf }}</td>
+                <td>{{ client.cnpj }}</td>
+                <td>{{ client.corporateReason }}</td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+
+    <!-- Seção de Laboratórios -->
+    <div class="col-12 col-md-8 mb-3 p-2">
+      <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-2 p-1">
+        <h2 class="text-center flex-grow-1 title p-1">Laboratories</h2>
+        <div class="alert custom-alert mb-0" role="alert">Total: {{ laboratories.length }}</div>
+      </div>
+      <div class="table-responsive">
+        <table class="table custom-table-dark table-striped-columns table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>CPF</th>
+                <th>Corporate Reason</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let laboratory of laboratories">
+                <td>{{ laboratory.id }}</td>
+                <td>{{ laboratory.name }}</td>
+                <td>{{ laboratory.cpf }}</td>
+                <td>{{ laboratory.corporateReason }}</td>
+              </tr>
+            </tbody>
+          </table>
+      </div>
+    </div>
+
+    <!-- Total de Pessoas na Feira -->
+    <div class="col-12 col-md-8 mb-4">
+      <div class="alert custom-alert text-center" role="alert">
+        All Entities: {{ clients.length + laboratories.length }}
+      </div>
+    </div>
+  </div>
+</div>
