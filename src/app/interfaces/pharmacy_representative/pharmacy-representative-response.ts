@@ -1,6 +1,6 @@
-export interface ClientResponse {
+export interface PharmacyRepresentativeResponse {
     id: number
-    fullName: string
+    name: string
     cpf: string
     cnpj: string
     corporateReason: string

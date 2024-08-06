@@ -1,7 +1,7 @@
-import { ClientResponse } from "../client/client-response";
-import { LaboratoryResponse } from "../laboratory/laboratory-response";
+import { LaboratoryMemberResponse } from "../laboratory/laboratory-member-response";
+import { PharmacyRepresentativeResponse } from "../pharmacy_representative/pharmacy-representative-response";
 
 export interface EntitiesListResponse {
-    clients: ClientResponse[]
-    laboratories: LaboratoryResponse[]
+    pharmacyRepresentatives: PharmacyRepresentativeResponse[]
+    laboratoryMembers: LaboratoryMemberResponse[]
 }
