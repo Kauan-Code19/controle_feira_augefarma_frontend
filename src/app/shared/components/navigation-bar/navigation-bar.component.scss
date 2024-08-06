@@ -5,7 +5,7 @@
 /* Define as cores e o estilo padrão para os links */
 .custom-link {
     color: white;
-    transition: color 0.4s;
+    transition: background-color 0.3s;
 }
 
 /* Define o estilo do link ativo */
@@ -33,4 +33,26 @@
 /* Alterar a cor do ícone ao passar o mouse */
 .custom-toggler:hover {
     background-color: #bd1a27;
+}
+
+.dropdown-menu {
+    background-color: #f4f4f4;
+}
+
+/* Estilizar itens do dropdown */
+.dropdown-item {
+    color: #eb1c24; /* Cor do texto */
+    transition: background-color 0.3s; /* Transição suave para cor de fundo */
+}
+
+/* Estilizar o item ativo do dropdown */
+.dropdown-item.active,
+.dropdown-item:hover {
+    background-color: #eb1c24; /* Cor de fundo ao passar o mouse */
+    color: #fff; /* Cor do texto */
+}
+
+/* Estilizar o dropdown-toggle */
+.dropdown-toggle::after {
+    display: none; /* Remove o ícone padrão do dropdown */
 }
