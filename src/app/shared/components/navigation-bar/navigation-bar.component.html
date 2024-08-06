@@ -28,8 +28,13 @@
                         <li><a class="dropdown-item my-1 p-3" routerLink="/register/laboratory" routerLinkActive="active">laboratory</a></li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link custom-link me-3 p-3" routerLink="/checking" routerLinkActive="active">Checking</a>
+                <li class="nav-item dropdown-center">
+                    <a class="nav-link custom-link me-3 p-3 dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" [ngClass]="{'active': isCheckingActive()}">Checking</a>
+                    <ul class="dropdown-menu text-center">
+                        <li><a class="dropdown-item my-1 p-3" routerLink="/checking/buffet" routerLinkActive="active">Buffet</a></li>
+                        <li><a class="dropdown-item my-1 p-3" routerLink="/checking/party" routerLinkActive="active">Party</a></li>
+                        <li><a class="dropdown-item my-1 p-3" routerLink="/checking/fair" routerLinkActive="active">Fair</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link custom-link me-3 p-3" routerLink="/logout" routerLinkActive="active">Logout</a>
