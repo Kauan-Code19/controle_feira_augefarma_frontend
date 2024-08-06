@@ -1,21 +1,21 @@
 import { Inject, Injectable, OnDestroy, PLATFORM_ID } from '@angular/core';
 import { Client, Message } from '@stomp/stompjs';
 import { BehaviorSubject } from 'rxjs';
-import { LaboratoryResponse } from '../../../interfaces/laboratory/laboratory-response';
-import { ClientResponse } from '../../../interfaces/client/client-response';
+import { PharmacyRepresentativeResponse } from '../../../interfaces/pharmacy_representative/pharmacy-representative-response';
 import { EntitiesListResponse } from '../../../interfaces/socket/entities-list-response';
 import { isPlatformBrowser } from '@angular/common';
+import { LaboratoryMemberResponse } from '../../../interfaces/laboratory/laboratory-member-response';
 
 @Injectable({
   providedIn: 'root'
 })
 export class StompService implements OnDestroy{
   private client: Client | undefined;
-  private clienteSubject = new BehaviorSubject<ClientResponse[]>([]);
-  private laboratorioSubject = new BehaviorSubject<LaboratoryResponse[]>([]);
+  private pharmacyRepresentativeSubject = new BehaviorSubject<PharmacyRepresentativeResponse[]>([]);
+  private laboratoryMemberSubject = new BehaviorSubject<LaboratoryMemberResponse[]>([]);
 
-  cliente$ = this.clienteSubject.asObservable();
-  laboratorio$ = this.laboratorioSubject.asObservable();
+  pharmacyRepresentative$ = this.pharmacyRepresentativeSubject.asObservable();
+  laboratoryMember$ = this.laboratoryMemberSubject.asObservable();
 
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     if (isPlatformBrowser(this.platformId)) {
@@ -36,12 +36,12 @@ export class StompService implements OnDestroy{
             try {
               const data: EntitiesListResponse = JSON.parse(message.body);
 
-              if (data.clients) {
-                this.clienteSubject.next(data.clients);
+              if (data.pharmacyRepresentatives) {
+                this.pharmacyRepresentativeSubject.next(data.pharmacyRepresentatives);
               }
 
-              if (data.laboratories) {
-                this.laboratorioSubject.next(data.laboratories);
+              if (data.laboratoryMembers) {
+                this.laboratoryMemberSubject.next(data.laboratoryMembers);
               }
             } catch (error) {
               console.error('Error parsing message body:', error, message.body);

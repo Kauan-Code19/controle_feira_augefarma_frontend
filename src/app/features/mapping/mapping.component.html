@@ -9,8 +9,8 @@
     <!-- Seção de Clientes -->
     <div class="col-12 col-md-8 mb-4 p-2">
       <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-2 p-1">
-        <h2 class="text-center flex-grow-1 title p-1">Clients</h2>
-        <div class="alert custom-alert mb-0" role="alert">Total: {{ clients.length }}</div>
+        <h2 class="text-center flex-grow-1 title p-1">Pharmacy Representatives</h2>
+        <div class="alert custom-alert mb-0" role="alert">Total: {{ pharmacyRepresentatives.length }}</div>
       </div>
       <div class="table-responsive text-center">
         <table class="table custom-table-dark table-striped-columns table-bordered table-hover">
@@ -24,12 +24,12 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let client of clients">
-                <td>{{ client.id }}</td>
-                <td>{{ client.fullName }}</td>
-                <td>{{ client.cpf }}</td>
-                <td>{{ client.cnpj }}</td>
-                <td>{{ client.corporateReason }}</td>
+              <tr *ngFor="let pharmacyRepresentative of pharmacyRepresentatives">
+                <td>{{ pharmacyRepresentative.id }}</td>
+                <td>{{ pharmacyRepresentative.name }}</td>
+                <td>{{ pharmacyRepresentative.cpf }}</td>
+                <td>{{ pharmacyRepresentative.cnpj }}</td>
+                <td>{{ pharmacyRepresentative.corporateReason }}</td>
               </tr>
             </tbody>
           </table>
@@ -39,8 +39,8 @@
     <!-- Seção de Laboratórios -->
     <div class="col-12 col-md-8 mb-3 p-2">
       <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-2 p-1">
-        <h2 class="text-center flex-grow-1 title p-1">Laboratories</h2>
-        <div class="alert custom-alert mb-0" role="alert">Total: {{ laboratories.length }}</div>
+        <h2 class="text-center flex-grow-1 title p-1">Laboratory Members</h2>
+        <div class="alert custom-alert mb-0" role="alert">Total: {{ laboratoryMembers.length }}</div>
       </div>
       <div class="table-responsive text-center">
         <table class="table custom-table-dark table-striped-columns table-bordered table-hover">
@@ -53,11 +53,11 @@
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let laboratory of laboratories">
-                <td>{{ laboratory.id }}</td>
-                <td>{{ laboratory.name }}</td>
-                <td>{{ laboratory.cpf }}</td>
-                <td>{{ laboratory.corporateReason }}</td>
+              <tr *ngFor="let laboratoryMember of laboratoryMembers">
+                <td>{{ laboratoryMember.id }}</td>
+                <td>{{ laboratoryMember.name }}</td>
+                <td>{{ laboratoryMember.cpf }}</td>
+                <td>{{ laboratoryMember.laboratory }}</td>
               </tr>
             </tbody>
           </table>
@@ -67,7 +67,7 @@
     <!-- Total de Pessoas na Feira -->
     <div class="col-12 col-md-8 mb-4">
       <div class="alert custom-alert text-center" role="alert">
-        All Entities: {{ clients.length + laboratories.length }}
+        All Entities: {{ pharmacyRepresentatives.length + laboratoryMembers.length }}
       </div>
     </div>
   </div>

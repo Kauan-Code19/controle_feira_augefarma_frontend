@@ -1,9 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { ChangeDetectorRef, Component, NgZone, OnDestroy, OnInit } from '@angular/core';
-import { ClientResponse } from '../../interfaces/client/client-response';
-import { LaboratoryResponse } from '../../interfaces/laboratory/laboratory-response';
+import { PharmacyRepresentativeResponse } from '../../interfaces/pharmacy_representative/pharmacy-representative-response';
 import { StompService } from '../../shared/services/socket/stomp.service';
 import { Subscription } from 'rxjs';
+import { LaboratoryMemberResponse } from '../../interfaces/laboratory/laboratory-member-response';
 
 @Component({
   selector: 'mapping-component',
@@ -14,8 +14,8 @@ import { Subscription } from 'rxjs';
   styleUrl: './mapping.component.scss'
 })
 export class MappingComponent implements OnInit, OnDestroy {
-  clients: ClientResponse[] = [];
-  laboratories: LaboratoryResponse[] = [];
+  pharmacyRepresentatives: PharmacyRepresentativeResponse[] = [];
+  laboratoryMembers: LaboratoryMemberResponse[] = [];
   currentDateTime: string = new Date().toLocaleString();
   private intervalId: any;
 
@@ -25,14 +25,14 @@ export class MappingComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.subscriptions.push(
-      this.stompService.cliente$.subscribe((clients) => {
-        this.clients = clients;
+      this.stompService.pharmacyRepresentative$.subscribe((pharmacyRepresentatives) => {
+        this.pharmacyRepresentatives = pharmacyRepresentatives;
       })
     )
 
     this.subscriptions.push(
-      this.stompService.laboratorio$.subscribe((laboratories) => {
-        this.laboratories = laboratories;
+      this.stompService.laboratoryMember$.subscribe((laboratoryMembers) => {
+        this.laboratoryMembers = laboratoryMembers;
       })
     );
 
