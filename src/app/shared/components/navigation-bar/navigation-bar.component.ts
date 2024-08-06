@@ -22,4 +22,8 @@ export class NavigationBarComponent {
   isRegisterActive(): boolean {
     return this.router.url.startsWith('/register');
   }
+
+  isCheckingActive(): boolean {
+    return this.router.url.startsWith('/checking');
+  }
 }
