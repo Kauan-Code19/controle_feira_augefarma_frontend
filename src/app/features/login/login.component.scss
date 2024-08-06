@@ -1,0 +1,17 @@
+.background {
+    background-color: #f4f4f4; /* Um tom muito claro de cinza para não competir com a cor principal do Navbar */
+}
+
+/* Cor de fundo do cartão */
+.card {
+    background-color: #ffffff; /* Branco para garantir o máximo contraste com o texto */
+    min-height: 410px; 
+}
+
+.card-title {
+    color: #eb1c24;
+}
+
+.container-fluid {
+    min-height: 100vh;
+}

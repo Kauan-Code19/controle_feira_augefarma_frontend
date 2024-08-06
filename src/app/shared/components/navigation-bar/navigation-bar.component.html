@@ -1,6 +1,6 @@
-<nav class="navbar navbar-expand-md p-1">
-    <div class="container-fluid ">
-        <a class="navbar-brand" href="#">
+<nav *ngIf="!isLoginPage()" class="navbar sticky-top navbar-expand-md p-3">
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink="/">
             <img 
                 ngSrc="/assets/logoAugefarma2.png" 
                 alt="Logo Augefarma" 
@@ -18,16 +18,16 @@
             <!-- Itens de navegação -->
             <ul class="navbar-nav d-flex flex-column flex-md-row text-center m-0 p-1">
                 <li class="nav-item">
-                  <a class="nav-link active custom-link me-3 p-3" aria-current="page" href="#mapping">Mapping</a>
+                    <a class="nav-link custom-link me-3 p-3" routerLink="/mapping" routerLinkActive="active" aria-current="page">Mapping</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link custom-link me-3 p-3" href="#register">Register</a>
-                  </li>
-                <li class="nav-item">
-                  <a class="nav-link custom-link me-3 p-3" href="#checking">Checking</a>
+                    <a class="nav-link custom-link me-3 p-3" routerLink="/register" routerLinkActive="active">Register</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link custom-link me-3 p-3" href="#logout">Logout</a>
+                    <a class="nav-link custom-link me-3 p-3" routerLink="/checking" routerLinkActive="active">Checking</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link custom-link me-3 p-3" routerLink="/logout" routerLinkActive="active">Logout</a>
                 </li>
             </ul>
         </div>

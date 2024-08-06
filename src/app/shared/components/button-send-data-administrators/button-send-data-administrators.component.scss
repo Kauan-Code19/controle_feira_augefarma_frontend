@@ -1,0 +1,37 @@
+.btn {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 300;
+}
+
+.btn-text-primary {
+    color: #fff !important; /* Cor principal */
+}
+  
+.btn-text-secondary {
+  color: #eb1c24 !important; /* Cor secundária */
+}
+
+.btn-secondary {
+    --bs-btn-color: #fff;
+    --bs-btn-bg: #041434;
+    --bs-btn-border-color: #041434;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #031229;
+    --bs-btn-hover-border-color: #021020;
+    --bs-btn-focus-shadow-rgb: 4, 20, 52;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #021020;
+    --bs-btn-active-border-color: #010d18;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #041434;
+    --bs-btn-disabled-border-color: #041434;
+}
+
+.btn.disabled, .btn:disabled, fieldset:disabled .btn {
+    color: #fff; /* Cor do texto do botão desativado */
+    pointer-events: none;
+    background-color: #041434; /* Cor de fundo do botão desativado */
+    border-color: #041434; /* Cor da borda do botão desativado */
+    opacity: 0.65; /* Opacidade padrão para botões desativados */
+}

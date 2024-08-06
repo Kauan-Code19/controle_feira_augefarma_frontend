@@ -62,3 +62,7 @@ testem.log
 .env.development.local
 .env.test.local
 .env.production.local
+
+
+# Ignore environment files for production
+/src/environments/environment.ts
