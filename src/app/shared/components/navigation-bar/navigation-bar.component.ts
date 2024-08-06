@@ -26,4 +26,8 @@ export class NavigationBarComponent {
   isCheckingActive(): boolean {
     return this.router.url.startsWith('/checking');
   }
+
+  isGenerateBadgeActive(): boolean {
+    return this.router.url.startsWith('/generate-badge');
+  }
 }

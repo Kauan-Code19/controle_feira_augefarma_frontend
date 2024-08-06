@@ -29,6 +29,13 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown-center">
+                    <a class="nav-link custom-link me-3 p-3 dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" [ngClass]="{'active': isGenerateBadgeActive()}">Badge</a>
+                    <ul class="dropdown-menu text-center">
+                        <li><a class="dropdown-item my-1 p-3" routerLink="/generate-badge/pharmacy-representative" routerLinkActive="active">pharmacy representative</a></li>
+                        <li><a class="dropdown-item my-1 p-3" routerLink="/generate-badge/laboratory-member" routerLinkActive="active">laboratory member</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown-center">
                     <a class="nav-link custom-link me-3 p-3 dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" [ngClass]="{'active': isCheckingActive()}">Checking</a>
                     <ul class="dropdown-menu text-center">
                         <li><a class="dropdown-item my-1 p-3" routerLink="/checking/buffet" routerLinkActive="active">Buffet</a></li>
