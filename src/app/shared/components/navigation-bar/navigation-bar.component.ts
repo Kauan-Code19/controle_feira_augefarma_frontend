@@ -18,4 +18,8 @@ export class NavigationBarComponent {
   isLoginPage(): boolean {
     return this.router.url === '/login';
   }
+
+  isRegisterActive(): boolean {
+    return this.router.url.startsWith('/register');
+  }
 }

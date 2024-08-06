@@ -20,8 +20,13 @@
                 <li class="nav-item">
                     <a class="nav-link custom-link me-3 p-3" routerLink="/mapping" routerLinkActive="active" aria-current="page">Mapping</a>
                 </li>
-                <li class="nav-item">
-                    <a class="nav-link custom-link me-3 p-3" routerLink="/register" routerLinkActive="active">Register</a>
+                <li class="nav-item dropdown-center">
+                    <a class="nav-link custom-link me-3 p-3 dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" [ngClass]="{'active': isRegisterActive()}">Register</a>
+                    <ul class="dropdown-menu text-center">
+                        <li><a class="dropdown-item my-1 p-3" routerLink="/register/pharmacy-representative" routerLinkActive="active">pharmacy representative</a></li>
+                        <li><a class="dropdown-item my-1 p-3" routerLink="/register/laboratory-member" routerLinkActive="active">laboratory member</a></li>
+                        <li><a class="dropdown-item my-1 p-3" routerLink="/register/laboratory" routerLinkActive="active">laboratory</a></li>
+                    </ul>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link custom-link me-3 p-3" routerLink="/checking" routerLinkActive="active">Checking</a>
