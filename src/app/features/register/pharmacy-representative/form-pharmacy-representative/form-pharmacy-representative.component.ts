@@ -1,22 +1,22 @@
 import { Component } from '@angular/core';
 import { ButtonSendDataPharmacyRepresentativesComponent } from "../../../../shared/components/button-send-data-pharmacy-representatives/button-send-data-pharmacy-representatives.component";
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms';
-import { AuthenticationService } from '../../../../shared/services/authentication/authentication.service';
 import { Router } from '@angular/router';
 import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { PharmacyRepresentativeService } from '../../../../shared/services/pharmacyRepresentative/pharmacy-representative.service';
 
 @Component({
   selector: 'form-pharmacy-representative-component',
   standalone: true,
   imports: [ButtonSendDataPharmacyRepresentativesComponent, ReactiveFormsModule, NgxMaskDirective, NgxMaskPipe],
-  providers: [Router, provideNgxMask()],
+  providers: [Router, provideNgxMask(), PharmacyRepresentativeService],
   templateUrl: './form-pharmacy-representative.component.html',
   styleUrl: './form-pharmacy-representative.component.scss'
 })
 export class FormPharmacyRepresentativeComponent {
   inputsForm: FormGroup;
 
-  constructor(private authenticationService: AuthenticationService, private router: Router) {
+  constructor(private pharmacyRepresentativeService: PharmacyRepresentativeService, private router: Router) {
     this.inputsForm = new FormGroup({
       name: new FormControl('', 
         [
@@ -34,7 +34,7 @@ export class FormPharmacyRepresentativeComponent {
           Validators.required,
           Validators.pattern("^\\d{2}\\.\\d{3}\\.\\d{3}/\\d{4}-\\d{2}$")
         ]),
-      corporate_reason:new FormControl('', 
+      corporateReason:new FormControl('', 
         [
           Validators.required,
           Validators.minLength(2),
@@ -68,6 +68,24 @@ export class FormPharmacyRepresentativeComponent {
   }
 
   submit() {
-    
+
+    if (this.inputsForm.valid) {
+      this.pharmacyRepresentativeService.registerPharmacyRepresentative
+      (
+        this.inputsForm.value.name,
+        this.inputsForm.value.cpf,
+        this.inputsForm.value.cnpj,
+        this.inputsForm.value.corporateReason,
+      ).subscribe({
+        next: (response) => {
+          alert(`${response.name} registered successfully!`)
+
+          // this.router.navigateByUrl("/generate-badge/pharmacy-representative")
+        },
+        error() {
+          alert(`CPF already registered`)
+        },
+      })
+    }
   }
 }
