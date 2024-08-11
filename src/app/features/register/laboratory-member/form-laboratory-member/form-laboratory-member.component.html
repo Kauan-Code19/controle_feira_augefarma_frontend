@@ -1,0 +1,19 @@
+<form [formGroup]="inputsForm">
+    <div class="form-floating mb-2 p-2">
+      <input type="name" class="form-control p-2" id="input_name" placeholder="name" 
+        formControlName="name">
+      <label for="input_name">Name</label>
+    </div>
+    <div class="form-floating mb-2 p-2">
+      <input type="text" class="form-control p-2" id="input_cpf" placeholder="000.000.000-00" 
+        formControlName="cpf"  mask="000.000.000-00">
+      <label for="input_cpf">Cpf</label>
+    </div>
+    <div class="form-floating mb-3 p-2">
+      <input type="text" class="form-control p-2" id="input_laboratory" placeholder="Laboratory" 
+        formControlName="laboratory">
+      <label for="input_laboratory">Laboratory</label>
+    </div>
+
+    <button-send-data-laboratory-members-component (click)="submit()" [disabled]="!inputsForm.valid"></button-send-data-laboratory-members-component>
+</form>
