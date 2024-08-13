@@ -1,0 +1,9 @@
+<form [formGroup]="inputsForm">
+    <div class="form-floating my-5 p-2">
+      <input type="corporateReason" class="form-control p-2" id="input_corporateReason" placeholder="corporateReason" 
+        formControlName="corporateReason">
+      <label for="input_corporateReason">Corporate Reason</label>
+    </div>
+
+    <button-send-data-laboratory-component (click)="submit()" [disabled]="!inputsForm.valid"></button-send-data-laboratory-component>
+</form>
