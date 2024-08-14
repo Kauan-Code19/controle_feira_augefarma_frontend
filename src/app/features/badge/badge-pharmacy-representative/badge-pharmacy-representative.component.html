@@ -1,0 +1,5 @@
+<div class="container-fluid d-flex justify-content-center align-items-center background flex-column flex-grow-1">
+    <h1 class="text-center p-2">Generate Badge Pharmacy Representative</h1>
+    <search-pharmacy-representative-component (results)="handleSearchResults($event)"></search-pharmacy-representative-component>
+    <accordion-pharmacy-representative-component [results]="searchResults"></accordion-pharmacy-representative-component>
+</div>
