@@ -1,0 +1,15 @@
+<div [formGroup]="inputsForm" class="d-flex flex-column p-1">
+    <label for="name" class="form-label text-center">Search By Name Pharmacy Representative </label>
+    <div class="input-group mb-3 p-2">
+      <input type="text" class="form-control" placeholder="Search By Name" aria-label="Search By Name Pharmacy Representative" aria-describedby="button-addon2"
+        formControlName="name" id="name">
+      <app-button-search-pharmacy-representative (click)="submit()" [disabled]="!inputsForm.get('name')?.valid"></app-button-search-pharmacy-representative>
+    </div>
+  
+    <label for="cpf" class="form-label text-center">Search By Cpf Pharmacy Representative </label>
+    <div class="input-group mb-2 p-2">
+      <input type="text" class="form-control" placeholder="Search By Cpf" aria-label="Search By Cpf Pharmacy Representative" aria-describedby="button-addon2"
+        formControlName="cpf" mask="000.000.000-00" id="cpf">
+      <app-button-search-pharmacy-representative (click)="submit()" [disabled]="!inputsForm.get('cpf')?.valid"></app-button-search-pharmacy-representative>
+    </div>
+  </div>
