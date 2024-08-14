@@ -4,6 +4,7 @@ import { MappingComponent } from './features/mapping/mapping.component';
 import { LaboratoryMemberComponent } from './features/register/laboratory-member/laboratory-member.component';
 import { PharmacyRepresentativeComponent } from './features/register/pharmacy-representative/pharmacy-representative.component';
 import { LaboratoryComponent } from './features/register/laboratory/laboratory.component';
+import { BadgePharmacyRepresentativeComponent } from './features/badge/badge-pharmacy-representative/badge-pharmacy-representative.component';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent},
@@ -11,6 +12,7 @@ export const routes: Routes = [
     { path: 'register/laboratory-member', component: LaboratoryMemberComponent},
     { path: 'register/laboratory', component: LaboratoryComponent},
     { path: 'register/pharmacy-representative', component: PharmacyRepresentativeComponent},
+    { path: 'generate-badge/pharmacy-representative', component: BadgePharmacyRepresentativeComponent},
     { path: '',   redirectTo: '/login', pathMatch: 'full' }
     
 ];
