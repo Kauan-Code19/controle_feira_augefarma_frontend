@@ -1,0 +1,28 @@
+<div class="accordion accordion-flush" id="accordionFlushExample">
+    <div class="accordion-item" *ngFor="let result of results; let i = index">
+      <h2 class="accordion-header">
+        <button 
+          class="accordion-button collapsed" 
+          type="button" 
+          [attr.data-bs-toggle]="'collapse'" 
+          [attr.data-bs-target]="'#flush-collapse' + i" 
+          aria-expanded="false" 
+          [attr.aria-controls]="'flush-collapse' + i"
+        >
+          {{ result.name }} (ID: {{ result.id }})
+        </button>
+      </h2>
+      <div 
+        [id]="'flush-collapse' + i" 
+        class="accordion-collapse collapse" 
+        [attr.data-bs-parent]="'#accordionFlushExample'"
+      >
+        <div class="accordion-body text-center">
+          <p><strong>CPF:</strong> {{ result.cpf }}</p>
+          <p><strong>CNPJ:</strong> {{ result.cnpj }}</p>
+          <p><strong>Razão Social:</strong> {{ result.corporateReason }}</p>
+          <span class="material-icons text-primary ms-3" style="cursor: pointer;" (click)="download(result.id)">download</span>
+        </div>
+      </div>
+    </div>
+  </div>

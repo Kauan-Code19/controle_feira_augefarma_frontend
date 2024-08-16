@@ -1,0 +1,6 @@
+<div class="container-fluid d-flex justify-content-center align-items-center background flex-column flex-grow-1">
+    <h1 class="text-center p-2">Generate Badge Laboratory Member</h1>
+    <search-laboratory-member-component (results)="handleSearchResults($event)"></search-laboratory-member-component>
+    <accordion-laboratory-member-component [results]="searchResults"></accordion-laboratory-member-component>
+</div>
+
