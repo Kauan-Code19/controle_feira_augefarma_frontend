@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
-  selector: 'app-button-search-pharmacy-representative',
+  selector: 'button-search-pharmacy-representative-component',
   standalone: true,
   imports: [],
   templateUrl: './button-search-pharmacy-representative.component.html',
