@@ -1,23 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { FormPharmacyRepresentativeComponent } from './form-pharmacy-representative.component';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { FormPharmacyRepresentativeComponent } from './form-pharmacy-representative.component'
 
 describe('FormPharmacyRepresentativeComponent', () => {
-  let component: FormPharmacyRepresentativeComponent;
-  let fixture: ComponentFixture<FormPharmacyRepresentativeComponent>;
+  let component: FormPharmacyRepresentativeComponent
+  let fixture: ComponentFixture<FormPharmacyRepresentativeComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [FormPharmacyRepresentativeComponent]
     })
-    .compileComponents();
+    .compileComponents()
     
-    fixture = TestBed.createComponent(FormPharmacyRepresentativeComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    fixture = TestBed.createComponent(FormPharmacyRepresentativeComponent)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  })
 
   it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    expect(component).toBeTruthy()
+  })
+})

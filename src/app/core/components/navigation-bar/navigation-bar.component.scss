@@ -1,0 +1,54 @@
+* {
+    font-weight: 400
+}
+
+.navbar {
+    background-color: #041434
+}
+
+.custom-link {
+    color: white;
+    transition: background-color 0.3s
+}
+
+.custom-link.active {
+    color: white !important;
+    background-color: #eb1c24;
+    border-radius: 15px 
+}
+
+.custom-link:hover {
+    color: white !important;
+    background-color: #eb1c23f5;
+    border-radius: 15px
+}
+
+.custom-toggler {
+    border-color: #321631 !important;
+    background-color: #eb1c24;
+    padding: 5px;
+    border-radius: 8px
+}
+
+.custom-toggler:hover {
+    background-color: #bd1a27
+}
+
+.dropdown-menu {
+    background-color: #f4f4f4
+}
+
+.dropdown-item {
+    color: #eb1c24;
+    transition: background-color 0.3s
+}
+
+.dropdown-item.active,
+.dropdown-item:hover {
+    background-color: #eb1c24;
+    color: #fff
+}
+
+.dropdown-toggle::after {
+    display: none
+}

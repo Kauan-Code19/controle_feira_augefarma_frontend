@@ -1,24 +1,23 @@
 <form [formGroup]="inputsForm">
-    <div class="form-floating mb-2 p-2">
-      <input type="name" class="form-control p-2" id="input_name" placeholder="name" 
-        formControlName="name">
-      <label for="input_name">Name</label>
-    </div>
-    <div class="form-floating mb-2 p-2">
-      <input type="text" class="form-control p-2" id="input_cpf" placeholder="000.000.000-00" 
-        formControlName="cpf"  mask="000.000.000-00">
-      <label for="input_cpf">Cpf</label>
-    </div>
-    <div class="form-floating mb-2 p-2">
-      <input type="text" class="form-control p-2" id="input_cnpj" placeholder="00.000.000/0000-00" 
-        formControlName="cnpj" mask="00.000.000/0000-00">
-      <label for="input_cnpj">Cnpj</label>
-    </div>
-    <div class="form-floating mb-3 p-2">
-      <input type="text" class="form-control p-2" id="input_corporate_reason" placeholder="corporate reason" 
-        formControlName="corporateReason">
-      <label for="input_corporate_reason">Corporate Reason</label>
-    </div>
-
-    <button-send-data-pharmacy-representatives-component (click)="submit()" [disabled]="!inputsForm.valid"></button-send-data-pharmacy-representatives-component>
+  <div class="form-floating mb-2 p-2">
+    <input type="name" class="form-control p-2" id="input_name" placeholder="name" 
+      formControlName="name">
+    <label for="input_name">Name</label>
+  </div>
+  <div class="form-floating mb-2 p-2">
+    <input type="text" class="form-control p-2" id="input_cpf" placeholder="000.000.000-00" 
+      formControlName="cpf"  mask="000.000.000-00">
+    <label for="input_cpf">Cpf</label>
+  </div>
+  <div class="form-floating mb-2 p-2">
+    <input type="text" class="form-control p-2" id="input_cnpj" placeholder="00.000.000/0000-00" 
+      formControlName="cnpj" mask="00.000.000/0000-00">
+    <label for="input_cnpj">Cnpj</label>
+  </div>
+  <div class="form-floating mb-3 p-2">
+    <input type="text" class="form-control p-2" id="input_corporate_reason" placeholder="corporate reason" 
+      formControlName="corporateReason">
+    <label for="input_corporate_reason">Corporate Reason</label>
+  </div>
+  <button-send-data-component (click)="submit()" [disabled]="!inputsForm.valid"></button-send-data-component>
 </form>

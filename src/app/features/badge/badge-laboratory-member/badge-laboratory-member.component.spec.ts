@@ -1,23 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { BadgeLaboratoryMemberComponent } from './badge-laboratory-member.component';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { BadgeLaboratoryMemberComponent } from './badge-laboratory-member.component'
 
 describe('BadgeLaboratoryMemberComponent', () => {
-  let component: BadgeLaboratoryMemberComponent;
-  let fixture: ComponentFixture<BadgeLaboratoryMemberComponent>;
+  let component: BadgeLaboratoryMemberComponent
+  let fixture: ComponentFixture<BadgeLaboratoryMemberComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [BadgeLaboratoryMemberComponent]
     })
-    .compileComponents();
+    .compileComponents()
     
-    fixture = TestBed.createComponent(BadgeLaboratoryMemberComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    fixture = TestBed.createComponent(BadgeLaboratoryMemberComponent)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  })
 
   it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    expect(component).toBeTruthy()
+  })
+})

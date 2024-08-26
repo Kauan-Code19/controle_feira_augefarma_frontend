@@ -6,6 +6,7 @@ import { PharmacyRepresentativeComponent } from './features/register/pharmacy-re
 import { LaboratoryComponent } from './features/register/laboratory/laboratory.component';
 import { BadgePharmacyRepresentativeComponent } from './features/badge/badge-pharmacy-representative/badge-pharmacy-representative.component';
 import { BadgeLaboratoryMemberComponent } from './features/badge/badge-laboratory-member/badge-laboratory-member.component';
+import { CheckingComponent } from './features/checking/checking.component';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent},
@@ -15,6 +16,7 @@ export const routes: Routes = [
     { path: 'register/pharmacy-representative', component: PharmacyRepresentativeComponent},
     { path: 'generate-badge/pharmacy-representative', component: BadgePharmacyRepresentativeComponent},
     { path: 'generate-badge/laboratory-member', component: BadgeLaboratoryMemberComponent},
+    { path: 'checking/:segment', component: CheckingComponent },
     { path: '',   redirectTo: '/login', pathMatch: 'full' }
     
 ];

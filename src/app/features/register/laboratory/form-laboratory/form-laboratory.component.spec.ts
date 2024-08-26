@@ -1,23 +1,22 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { FormLaboratoryComponent } from './form-laboratory.component';
+import { ComponentFixture, TestBed } from '@angular/core/testing'
+import { FormLaboratoryComponent } from './form-laboratory.component'
 
 describe('FormLaboratoryComponent', () => {
-  let component: FormLaboratoryComponent;
-  let fixture: ComponentFixture<FormLaboratoryComponent>;
+  let component: FormLaboratoryComponent
+  let fixture: ComponentFixture<FormLaboratoryComponent>
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [FormLaboratoryComponent]
     })
-    .compileComponents();
+    .compileComponents()
     
-    fixture = TestBed.createComponent(FormLaboratoryComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+    fixture = TestBed.createComponent(FormLaboratoryComponent)
+    component = fixture.componentInstance
+    fixture.detectChanges()
+  })
 
   it('should create', () => {
-    expect(component).toBeTruthy();
-  });
-});
+    expect(component).toBeTruthy()
+  })
+})

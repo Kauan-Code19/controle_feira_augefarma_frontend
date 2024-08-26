@@ -1,0 +1,25 @@
+<div class="container-fluid d-flex justify-content-center align-items-center background flex-column flex-grow-1">
+  <div class="modal" tabindex="-1" [ngClass]="{'show': !selectedOption}" [style.display]="!selectedOption ? 'block' : 'none'">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Selecione uma Opção</h5>
+            <button type="button" class="close" (click)="selectOption('')" aria-label="Close">
+              <span aria-hidden="true">&times</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            Você deseja fazer check-in ou check-out?
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-primary" (click)="selectOption('checkin')">Check-in</button>
+            <button type="button" class="btn btn-secondary" (click)="selectOption('checkout')">Check-out</button>
+          </div>
+        </div>
+      </div>
+  </div>
+
+  <h1 class="text-center p-2"> Check</h1>
+  <scanner-qrcode-component (cpf)="sendCpfToBackend($event)"></scanner-qrcode-component>
+  <form-checking-component (manualCpf)="sendCpfToBackend($event)"></form-checking-component>
+</div>

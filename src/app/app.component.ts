@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { FooterComponent } from './shared/components/footer/footer.component';
-import { NavigationBarComponent } from './shared/components/navigation-bar/navigation-bar.component';
+import { FooterComponent } from './core/components/footer/footer.component';
+import { NavigationBarComponent } from './core/components/navigation-bar/navigation-bar.component';
 
 @Component({
   selector: 'app-root',
@@ -11,5 +11,5 @@ import { NavigationBarComponent } from './shared/components/navigation-bar/navig
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'controle-feira-frontend';
+  title = 'Augefarma Controle';
 }

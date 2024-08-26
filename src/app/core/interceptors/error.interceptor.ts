@@ -1,29 +1,28 @@
-import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http';
-import { catchError, pipe, throwError } from 'rxjs';
+import { HttpErrorResponse, HttpInterceptorFn } from '@angular/common/http'
+import { catchError, throwError } from 'rxjs'
 
 export const errorInterceptor: HttpInterceptorFn = (req, next) => {
   return next(req).pipe(
     catchError((error: HttpErrorResponse) => {
-      let errorMsg = '';
+      let errorMsg = ''
 
+      // Check for client-side error
       if (error.error instanceof ErrorEvent) {
-        // Erro do lado do cliente
-        errorMsg = `Client Error: ${error.error}`;
-      } else {
-        // Erro do lado do servidor
-        errorMsg = `Server Error: ${error.status} - ${error.error}`;
-        if (error.error && error.error.error) {
-          // Use a mensagem específica do backend, se disponível
-          errorMsg = error.error.error;
-        }
+        errorMsg = `Client Error: ${error.error.message}`
+        // Show the error in alert
+        alert(errorMsg) // Use the alert service to show the error message
+        return throwError(() => new Error(errorMsg))// Return early for client errors
       }
 
-      // Exibe o alerta com a mensagem de erro
-      window.alert(errorMsg);
+      // Handle server-side error
+      errorMsg = `Server Error: ${error.status} - ${error.error?.error || 'An unexpected error occurred.'}`
+      // Show the error in alert
+      alert(errorMsg) // Use the alert service to show the error message
 
-      // Retorna o erro para que possa ser manipulado se necessário
-      return throwError(() => new Error(errorMsg));
+      // Return the error to be handled if necessary
+      return throwError(() => new Error(errorMsg))
+
     })
-  );
-};
+  )
+}
 
