@@ -1,38 +1,45 @@
-import { Injectable } from '@angular/core';
-import { environment } from '../../../../../environments/environment.development';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
-import { LaboratoryMemberResponse } from '../../../../interfaces/laboratory/laboratory-member-response';
+import { Injectable } from '@angular/core'
+import { environment } from '../../../../../environments/environment.development'
+import { HttpClient, HttpParams } from '@angular/common/http'
+import { Observable } from 'rxjs'
+import { LaboratoryMemberResponse } from '../../../../interfaces/laboratory/laboratory-member-response'
 
 @Injectable({
   providedIn: 'root'
 })
 export class LaboratoryMemberService {
 
-  private endpointUrl = `${environment.apiUrl}/laboratory-member`
-  private endpointGetUrl = `${environment.apiUrl}/laboratory-member/search-by-name-or-cpf`
+  // Endpoint URL for laboratory member API
+  private endpointLaboratyMemberUrl = `${environment.apiUrl}/laboratory-member`;
 
   constructor(private http: HttpClient) { }
 
-  registerLaboratoryMember
-  (
-    name: string, cpf: string, laboratoryCorporateReason: string
-  ) : Observable<LaboratoryMemberResponse>
-  {
-    const data = {name, cpf, laboratoryCorporateReason}
+  // Method to register a new laboratory member
+  registerLaboratoryMember(
+    name: string, 
+    cpf: string, 
+    laboratoryCorporateReason: string
+  ): Observable<LaboratoryMemberResponse> {
+    const data = { name, cpf, laboratoryCorporateReason }; // Prepare data for registration
 
-    return this.http.post<LaboratoryMemberResponse>(this.endpointUrl, data)
+    // Send a POST request to register the laboratory member and return the observable of the response
+    return this.http.post<LaboratoryMemberResponse>(this.endpointLaboratyMemberUrl, data);
   }
 
-  getLaboratoryMemberByNameOrCpf(nameOrCpf: string) : Observable<LaboratoryMemberResponse[]> {
-    const params = new HttpParams().set('nameOrCpf', nameOrCpf)
+  // Method to get laboratory members by name or CPF
+  getLaboratoryMemberByNameOrCpf(nameOrCpf: string): Observable<LaboratoryMemberResponse[]> {
+    const params = new HttpParams().set('nameOrCpf', nameOrCpf); // Set query parameter for search
+    const url = `${this.endpointLaboratyMemberUrl}/search-by-name-or-cpf`; // Construct the URL for searching
 
-    return this.http.get<LaboratoryMemberResponse[]>(this.endpointGetUrl, { params })
+    // Send a GET request to fetch laboratory members and return the observable of the response
+    return this.http.get<LaboratoryMemberResponse[]>(url, { params });
   }
 
-  generateLaboratoryMemberBadge(laboratoryMemberId: number) : Observable<Blob> {
-    const url = `${this.endpointUrl}/${laboratoryMemberId}/badge`;
+  // Method to generate a badge for a laboratory member
+  generateLaboratoryMemberBadge(laboratoryMemberId: number): Observable<Blob> {
+    const url = `${this.endpointLaboratyMemberUrl}/${laboratoryMemberId}/badge`; // Construct the URL for badge generation
 
-    return this.http.get(url, { responseType: 'blob' })
+    // Send a GET request to generate the badge and return the observable of the response as a Blob
+    return this.http.get(url, { responseType: 'blob' });
   }
 }

@@ -1,0 +1,50 @@
+<nav *ngIf="!isLoginPage()" class="navbar sticky-top navbar-expand-md p-3">
+    <div class="container-fluid">
+        <a class="navbar-brand" [routerLink]="['/']">
+            <img 
+                ngSrc="/assets/logoAugefarma2.png" 
+                alt="Logo Augefarma" 
+                width="55" 
+                height="60" 
+                style="height: auto" 
+            >
+        </a>
+    
+        <button class="navbar-toggler custom-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon custom-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">''
+            <ul class="navbar-nav d-flex flex-column flex-md-row text-center m-0 p-1">
+                <li class="nav-item">
+                    <a class="nav-link custom-link me-3 p-3" href="/mapping" [ngClass]="{'active': isMappingActive()}">Mapping</a>
+                </li>
+                <li class="nav-item dropdown-center">
+                    <a class="nav-link custom-link me-3 p-3 dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" [ngClass]="{'active': isRegisterActive()}">Register</a>
+                    <ul class="dropdown-menu text-center">
+                        <li><a class="dropdown-item my-1 p-3" [routerLink]="['/register/pharmacy-representative']" routerLinkActive="active">pharmacy representative</a></li>
+                        <li><a class="dropdown-item my-1 p-3" [routerLink]="['/register/laboratory-member']" routerLinkActive="active">laboratory member</a></li>
+                        <li><a class="dropdown-item my-1 p-3" [routerLink]="['/register/laboratory']" routerLinkActive="active">laboratory</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown-center">
+                    <a class="nav-link custom-link me-3 p-3 dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" [ngClass]="{'active': isGenerateBadgeActive()}">Badge</a>
+                    <ul class="dropdown-menu text-center">
+                        <li><a class="dropdown-item my-1 p-3" [routerLink]="['/generate-badge/pharmacy-representative']" routerLinkActive="active">pharmacy representative</a></li>
+                        <li><a class="dropdown-item my-1 p-3" [routerLink]="['/generate-badge/laboratory-member']" routerLinkActive="active">laboratory member</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item dropdown-center">
+                    <a class="nav-link custom-link me-3 p-3 dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" [ngClass]="{'active': isCheckingActive()}">Checking</a>
+                    <ul class="dropdown-menu text-center">
+                        <li><a class="dropdown-item my-1 p-3" [routerLink]="['/checking', EventSegment.Buffet]" routerLinkActive="active">{{EventSegment.Buffet}}</a></li>
+                        <li><a class="dropdown-item my-1 p-3" [routerLink]="['/checking', EventSegment.Party]" routerLinkActive="active">{{EventSegment.Party}}</a></li>
+                        <li><a class="dropdown-item my-1 p-3" [routerLink]="['/checking', EventSegment.Fair]" routerLinkActive="active">{{EventSegment.Fair}}</a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link custom-link me-3 p-3" (click)="logout()">Logout</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

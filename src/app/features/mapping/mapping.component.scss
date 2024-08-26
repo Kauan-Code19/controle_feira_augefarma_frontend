@@ -1,30 +1,30 @@
 .container-fluid {
-    min-height: 100vh;
+    min-height: 100vh
 }
 
 .background {
-    background-color: #f4f4f4;
+    background-color: #f4f4f4
 }
 
 .custom-alert {
     background-color: #464E66;
-    color: white;      
+    color: white      
 }
 
 .custom-table-dark {
-    --bs-table-color: #f8f9fa; /* Cor do texto */
-    --bs-table-bg: #041434; /* Cor de fundo da tabela */
-    --bs-table-border-color: #bd1a28d7; /* Cor da borda da tabela */
-    --bs-table-striped-bg: #36435d; /* Cor de fundo das linhas alternadas */
-    --bs-table-striped-color: #f8f9fa; /* Cor do texto nas linhas alternadas */
-    --bs-table-active-bg: #1d2a43; /* Cor de fundo da linha ativa */
-    --bs-table-active-color: #f8f9fa; /* Cor do texto da linha ativa */
-    --bs-table-hover-bg: #363f52; /* Cor de fundo ao passar o mouse */
-    --bs-table-hover-color: #f8f9fa; /* Cor do texto ao passar o mouse */
+    --bs-table-color: #f8f9fa;
+    --bs-table-bg: #041434;
+    --bs-table-border-color: #bd1a28d7;
+    --bs-table-striped-bg: #36435d;
+    --bs-table-striped-color: #f8f9fa;
+    --bs-table-active-bg: #1d2a43;
+    --bs-table-active-color: #f8f9fa;
+    --bs-table-hover-bg: #363f52;
+    --bs-table-hover-color: #f8f9fa
 }
 
 @media (min-width: 768px) {
     .title {
-      margin-left: 95px;
+      margin-left: 95px
     }
 }
