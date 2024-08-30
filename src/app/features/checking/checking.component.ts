@@ -6,6 +6,7 @@ import { ActivatedRoute, RouterModule } from '@angular/router'
 import { ValidateEntryExitService } from '../../shared/services/authentication/validate-entry-exit.service'
 import { EventSegment } from '../../shared/enums/event-segment'
 import { ScannerQrCodeComponent } from './scanner-qrcode/scanner-qrcode'
+import { WristBandsService } from '../../shared/services/authorization/wrist-bands.service'
 
 @Component({
   selector: 'checking-component',
@@ -19,32 +20,37 @@ export class CheckingComponent implements OnInit {
   selectedOption: string | null = null; // Holds the selected option for check-in/check-out
   eventSegment: EventSegment | null = null; // Holds the current event segment
 
-  constructor(private route: ActivatedRoute, private validateEntryExitService: ValidateEntryExitService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private validateEntryExitService: ValidateEntryExitService,
+    private wristbandsService: WristBandsService) {}
 
   // Lifecycle hook that is called after the component is initialized
-ngOnInit(): void {
-  // Subscribe to route parameters
-  this.route.params.subscribe(params => {
-    const segment = params['segment']; // Get the 'segment' parameter from the route
-    if (segment) {
-      // Normalize the segment to match the enum values (capitalize the first letter)
-      const normalizedSegment = segment.charAt(0).toUpperCase() + segment.slice(1).toLowerCase();
+  ngOnInit(): void {
+    // Subscribe to route parameters
+    this.route.params.subscribe(params => {
+      const segment = params['segment'] // Get the 'segment' parameter from the route
+      if (segment) {
+        // Normalize the segment to match the enum values (capitalize the first letter)
+        const normalizedSegment = segment.charAt(0).toUpperCase() + segment.slice(1).toLowerCase()
+        
+        // Convert the normalized segment to the corresponding EventSegment enum value
+        const enumValue = EventSegment[normalizedSegment as keyof typeof EventSegment]
       
-      // Convert the normalized segment to the corresponding EventSegment enum value
-      const enumValue = EventSegment[normalizedSegment as keyof typeof EventSegment];
-      
-      // Assign the enum value to the eventSegment property
-      this.eventSegment = enumValue;
-    }
-  });
-}
+        // Assign the enum value to the eventSegment property
+        this.eventSegment = enumValue
+      }
+    });
+  }
 
+
+  isEventSegmentParty() {
+    return this.eventSegment == EventSegment.Party
+  }
 
   // Method to select an option (check-in or check-out)
   selectOption(option: string): void {
-    this.selectedOption = option; // Set the selected option
-    console.log(`Selected option: ${option}`); // Log the selected option
-    console.log(this.eventSegment); // Log the current event segment
+    this.selectedOption = option // Set the selected option
   }
 
   // Method to send CPF to the backend based on the selected option and event segment
@@ -54,7 +60,7 @@ ngOnInit(): void {
       // Validate entry by sending CPF and event segment to the service
       this.validateEntryExitService.validateEntry(cpf, this.eventSegment.toUpperCase()).subscribe({
         next(response) {
-          alert(response.message); // Alert the response message
+          alert(response.message) // Alert the response message
         },
       });
     }
@@ -64,8 +70,18 @@ ngOnInit(): void {
       // Validate exit by sending CPF to the service
       this.validateEntryExitService.validateExit(cpf).subscribe({
         next(response) {
-          alert(response.message); // Alert the response message
+          alert(response.message) // Alert the response message
         },
+      });
+    }
+
+    // If the event segment is for the party
+    if (this.eventSegment == EventSegment.Party) {
+      // Check the delivery status of the wristband by sending CPF to the service
+      this.wristbandsService.checkDeliveryOfWristband(cpf).subscribe({
+          next(response) {
+              alert(response.message); // Alert the response message
+          },
       });
     }
   }
