@@ -11,6 +11,11 @@
         <h2 class="text-center flex-grow-1 title p-1">Pharmacy Representatives</h2>
         <div class="alert custom-alert mb-0" role="alert">Total: {{ pharmacyRepresentatives.length }}</div>
       </div>
+      <div class="d-flex flex-column flex-md-row justify-content-center align-items-center mb-2 p-1">
+        <button (click)="copyAllRepresentativesData()" class="btn btn-sm btn-outline-secondary">
+          <i class="bi bi-clipboard"></i> Copy All Data
+        </button>
+      </div>
       <div class="table-responsive text-center">
         <table class="table custom-table-dark table-striped-columns table-bordered table-hover">
             <thead>

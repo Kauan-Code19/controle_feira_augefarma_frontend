@@ -72,9 +72,6 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "ssl": true,
-            "sslCert": "/home/kauan/ssl/cert.pem",
-            "sslKey": "/home/kauan/ssl/key.pem"
           },
           "configurations": {
             "production": {
