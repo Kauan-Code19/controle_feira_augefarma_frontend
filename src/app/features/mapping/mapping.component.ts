@@ -47,6 +47,36 @@ export class MappingComponent implements OnInit, OnDestroy {
     });
   }
 
+  copyAllRepresentativesData(): void {
+    let textToCopy = '';
+    
+    // Compor uma string com os dados de todos os representantes de farmácia
+    this.pharmacyRepresentatives.forEach(representative => {
+      textToCopy += `Name: ${representative.name}\nCNPJ: ${representative.cnpj}\nCorporate Reason: ${representative.corporateReason}\n\n`;
+    });
+
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(textToCopy).then(
+        () => {
+          console.log('Data copied to clipboard');
+          alert('All data copied to clipboard!'); // Feedback para o usuário
+        },
+        (err) => {
+          console.error('Failed to copy data: ', err);
+        }
+      );
+    } else {
+      // Fallback para navegadores mais antigos
+      let textArea = document.createElement('textarea');
+      textArea.value = textToCopy;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      alert('All data copied to clipboard!'); // Feedback para o usuário
+    }
+  }
+
   // Method to update the current date and time
   private updateDateTime(): void {
     this.currentDateTime = new Date().toLocaleString(); // Get the current date and time
