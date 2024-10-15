@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http'
+import { HttpClient, HttpParams } from '@angular/common/http'
 import { Injectable } from '@angular/core'
 import { Observable } from 'rxjs'
 import { environment } from '../../../../environments/environment.development'
@@ -17,5 +17,16 @@ export class LaboratoryService {
   registerLaboratory(corporateReason: string): Observable<LaboratoryResponse> {
     // Send a POST request to register the laboratory with the corporate reason and return the observable of the response
     return this.http.post<LaboratoryResponse>(this.endpointLaboratoryUrl, { corporateReason });
+  }
+
+  getLaboratoryByCorporateReason(corporateReason: string) : Observable<LaboratoryResponse> {
+    const params = new HttpParams().set("corporateReason", corporateReason)
+    const url = `${this.endpointLaboratoryUrl}/search-by-corporateReason`
+
+    return this.http.get<LaboratoryResponse>(url, {params})
+  }
+
+  deleteLaboratory(laboratoryId: number) : Observable<void> {
+    return this.http.delete<void>(`${this.endpointLaboratoryUrl}/${laboratoryId}`)
   }
 }

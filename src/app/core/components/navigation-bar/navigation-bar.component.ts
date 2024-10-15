@@ -42,6 +42,11 @@ export class NavigationBarComponent {
     return this.router.url.startsWith('/register')
   }
 
+  // Check if the register page is active
+  isDeleteActive(): boolean {
+    return this.router.url.startsWith('/delete')
+  }
+
   // Check if the checking page is active
   isCheckingActive(): boolean {
     return this.router.url.startsWith('/checking')

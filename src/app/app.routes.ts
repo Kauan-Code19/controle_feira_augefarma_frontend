@@ -7,6 +7,7 @@ import { LaboratoryComponent } from './features/register/laboratory/laboratory.c
 import { BadgePharmacyRepresentativeComponent } from './features/badge/badge-pharmacy-representative/badge-pharmacy-representative.component';
 import { BadgeLaboratoryMemberComponent } from './features/badge/badge-laboratory-member/badge-laboratory-member.component';
 import { CheckingComponent } from './features/checking/checking.component';
+import { DeleteComponent } from './features/delete/delete.component';
 
 export const routes: Routes = [
     { path: 'login', component: LoginComponent},
@@ -14,6 +15,7 @@ export const routes: Routes = [
     { path: 'register/laboratory-member', component: LaboratoryMemberComponent},
     { path: 'register/laboratory', component: LaboratoryComponent},
     { path: 'register/pharmacy-representative', component: PharmacyRepresentativeComponent},
+    { path: 'delete', component: DeleteComponent},
     { path: 'generate-badge/pharmacy-representative', component: BadgePharmacyRepresentativeComponent},
     { path: 'generate-badge/laboratory-member', component: BadgeLaboratoryMemberComponent},
     { path: 'checking/:segment', component: CheckingComponent },
