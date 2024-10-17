@@ -1,19 +1,19 @@
 <div class="container-fluid flex-grow-1 background">
   <div class="d-flex justify-content-center p-2">
     <div class="alert custom-alert text-center current-time my-5" role="alert">
-      Current Date/Time: {{ currentDateTime }}
+      Data/Hora Atual: {{ currentDateTime }}
     </div>
   </div>
 
   <div class="d-flex flex-column align-items-center p-1">
     <div class="col-12 col-md-8 mb-4 p-2">
       <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-2 p-1">
-        <h2 class="text-center flex-grow-1 title p-1">Pharmacy Representatives</h2>
+        <h2 class="text-center flex-grow-1 title p-1">Representantes de Farmácia</h2>
         <div class="alert custom-alert mb-0" role="alert">Total: {{ pharmacyRepresentatives.length }}</div>
       </div>
       <div class="d-flex flex-column flex-md-row justify-content-center align-items-center mb-2 p-1">
         <button (click)="copyAllRepresentativesData()" class="btn btn-sm btn-outline-secondary">
-          <i class="bi bi-clipboard"></i> Copy All Data
+          <i class="bi bi-clipboard"></i> Copiar Dados dos Representantes de Farmácia
         </button>
       </div>
       <div class="table-responsive text-center">
@@ -21,10 +21,10 @@
             <thead>
               <tr>
                 <th>ID</th>
-                <th>Name</th>
+                <th>Nome</th>
                 <th>CPF</th>
                 <th>CNPJ</th>
-                <th>Corporate Reason</th>
+                <th>Razão Social</th>
               </tr>
             </thead>
             <tbody>
@@ -42,7 +42,7 @@
 
     <div class="col-12 col-md-8 mb-3 p-2">
       <div class="d-flex flex-column flex-md-row justify-content-between align-items-center mb-2 p-1">
-        <h2 class="text-center flex-grow-1 title p-1">Laboratory Members</h2>
+        <h2 class="text-center flex-grow-1 title p-1">Membros de Laboratório</h2>
         <div class="alert custom-alert mb-0" role="alert">Total: {{ laboratoryMembers.length }}</div>
       </div>
       <div class="table-responsive text-center">
@@ -50,9 +50,9 @@
             <thead>
               <tr>
                 <th>ID</th>
-                <th>Name</th>
+                <th>Nome</th>
                 <th>CPF</th>
-                <th>Corporate Reason</th>
+                <th>Razão Social</th>
               </tr>
             </thead>
             <tbody>
@@ -70,7 +70,7 @@
     <!-- Total de Pessoas na Feira -->
     <div class="col-12 col-md-8 mb-4">
       <div class="alert custom-alert text-center" role="alert">
-        All Entities: {{ pharmacyRepresentatives.length + laboratoryMembers.length }}
+        Total Presente: {{ pharmacyRepresentatives.length + laboratoryMembers.length }}
       </div>
     </div>
   </div>

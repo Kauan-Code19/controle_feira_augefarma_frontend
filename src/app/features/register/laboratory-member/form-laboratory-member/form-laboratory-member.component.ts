@@ -69,11 +69,16 @@ export class FormLaboratoryMemberComponent {
         this.inputsForm.value.laboratory,
       ).subscribe({
         next: (response) => {
-          // Alert the user that the laboratory member has been registered successfully
-          alert(`${response.name} registered successfully!`);
+          // Alert the user that the laboratory member has been registrado com sucesso
+          alert(`${response.name} registrado com sucesso!`);
 
           // Navigate to the laboratory member badge generation page after successful registration
           this.router.navigateByUrl("/generate-badge/laboratory-member");
+        },
+
+        error() {
+          // Alert the user if the CPF is already registered
+          alert(`CPF já registrado`);
         },
       });
     }

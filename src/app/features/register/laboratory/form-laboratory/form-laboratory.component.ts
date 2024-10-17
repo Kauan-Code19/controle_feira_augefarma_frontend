@@ -36,12 +36,17 @@ export class FormLaboratoryComponent {
       // Call the laboratory service to register the laboratory with the provided corporate reason
       this.laboratoryService.registerLaboratory(this.inputsForm.value.corporateReason).subscribe({
         next: (response) => {
-          // Alert the user that the laboratory has been registered successfully
-          alert(`${response.corporateReason} registered successfully!`);
+          // Alert the user that the laboratory has been registrado com sucesso
+          alert(`${response.corporateReason} registrado com sucesso!`);
 
           // Navigate to the laboratory member registration page after successful registration
           this.router.navigateByUrl("/register/laboratory-member");
-        }
+        },
+
+        error() {
+          // Alert the user if the CPF is already registered
+          alert(`laboratorio já registrado`);
+        },
       });
     }
   }

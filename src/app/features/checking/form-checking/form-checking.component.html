@@ -1,8 +1,8 @@
 <div [formGroup]="inputsForm" class="d-flex flex-column p-1 mt-4">
-    <label for="cpf" class="form-label text-center">Enter The CPF Manually</label>
+    <label for="cpf" class="form-label text-center">Digite o CPF Manualmente</label>
     <div class="input-group p-2">
-      <input type="text" class="form-control" placeholder="Enter The CPF Manually" aria-label="Enter The CPF Manually" aria-describedby="button-addon2"
+      <input type="text" class="form-control" placeholder="Digite o CPF Manualmente" aria-label="Enter The CPF Manually" aria-describedby="button-addon2"
         formControlName="cpf" mask="000.000.000-00" id="cpf">
-      <reusable-button-component [btnText]="'Check'" (click)="emitManualCpf()" [disabled]="!inputsForm.get('cpf')?.valid"></reusable-button-component>
+      <reusable-button-component [btnText]="'Checar'" (click)="emitManualCpf()" [disabled]="!inputsForm.get('cpf')?.valid"></reusable-button-component>
     </div>
 </div>

@@ -16,32 +16,32 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">''
             <ul class="navbar-nav d-flex flex-column flex-md-row text-center m-0 p-1">
                 <li class="nav-item">
-                    <a class="nav-link custom-link me-3 p-3" href="/mapping" [ngClass]="{'active': isMappingActive()}">Mapping</a>
+                    <a class="nav-link custom-link me-3 p-3" href="/mapping" [ngClass]="{'active': isMappingActive()}">Mapear</a>
                 </li>
                 <li class="nav-item dropdown-center">
-                    <a class="nav-link custom-link me-3 p-3 dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" [ngClass]="{'active': isRegisterActive()}">Register</a>
+                    <a class="nav-link custom-link me-3 p-3 dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" [ngClass]="{'active': isRegisterActive()}">Registrar</a>
                     <ul class="dropdown-menu text-center">
-                        <li><a class="dropdown-item my-1 p-3" [routerLink]="['/register/pharmacy-representative']" routerLinkActive="active">pharmacy representative</a></li>
-                        <li><a class="dropdown-item my-1 p-3" [routerLink]="['/register/laboratory-member']" routerLinkActive="active">laboratory member</a></li>
-                        <li><a class="dropdown-item my-1 p-3" [routerLink]="['/register/laboratory']" routerLinkActive="active">laboratory</a></li>
+                        <li><a class="dropdown-item my-1 p-3" [routerLink]="['/register/pharmacy-representative']" routerLinkActive="active">representante de farmácia</a></li>
+                        <li><a class="dropdown-item my-1 p-3" [routerLink]="['/register/laboratory-member']" routerLinkActive="active">membro de laboratório</a></li>
+                        <li><a class="dropdown-item my-1 p-3" [routerLink]="['/register/laboratory']" routerLinkActive="active">laboratório</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link custom-link me-3 p-3" href="/delete" [ngClass]="{'active': isDeleteActive()}">Delete</a>
+                    <a class="nav-link custom-link me-3 p-3" href="/delete" [ngClass]="{'active': isDeleteActive()}">Deletar</a>
                 </li>
                 <li class="nav-item dropdown-center">
-                    <a class="nav-link custom-link me-3 p-3 dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" [ngClass]="{'active': isGenerateBadgeActive()}">Badge</a>
+                    <a class="nav-link custom-link me-3 p-3 dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" [ngClass]="{'active': isGenerateBadgeActive()}">Crachá</a>
                     <ul class="dropdown-menu text-center">
-                        <li><a class="dropdown-item my-1 p-3" [routerLink]="['/generate-badge/pharmacy-representative']" routerLinkActive="active">pharmacy representative</a></li>
-                        <li><a class="dropdown-item my-1 p-3" [routerLink]="['/generate-badge/laboratory-member']" routerLinkActive="active">laboratory member</a></li>
+                        <li><a class="dropdown-item my-1 p-3" [routerLink]="['/generate-badge/pharmacy-representative']" routerLinkActive="active">representante de farmácia</a></li>
+                        <li><a class="dropdown-item my-1 p-3" [routerLink]="['/generate-badge/laboratory-member']" routerLinkActive="active">membro de laboratório</a></li>
                     </ul>
                 </li>
                 <li class="nav-item dropdown-center">
-                    <a class="nav-link custom-link me-3 p-3 dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" [ngClass]="{'active': isCheckingActive()}">Checking</a>
+                    <a class="nav-link custom-link me-3 p-3 dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" [ngClass]="{'active': isCheckingActive()}">Checar</a>
                     <ul class="dropdown-menu text-center">
                         <li><a class="dropdown-item my-1 p-3" [routerLink]="['/checking', EventSegment.Buffet]" routerLinkActive="active">{{EventSegment.Buffet}}</a></li>
-                        <li><a class="dropdown-item my-1 p-3" [routerLink]="['/checking', EventSegment.Party]" routerLinkActive="active">{{EventSegment.Party}}</a></li>
-                        <li><a class="dropdown-item my-1 p-3" [routerLink]="['/checking', EventSegment.Fair]" routerLinkActive="active">{{EventSegment.Fair}}</a></li>
+                        <li><a class="dropdown-item my-1 p-3" [routerLink]="['/checking', EventSegment.Party]" routerLinkActive="active">festa</a></li>
+                        <li><a class="dropdown-item my-1 p-3" [routerLink]="['/checking', EventSegment.Fair]" routerLinkActive="active">feira</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">
