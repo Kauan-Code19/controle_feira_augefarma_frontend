@@ -1,0 +1,22 @@
+<div [formGroup]="inputsForm" class="d-flex flex-column p-1">
+    <label for="name" class="form-label text-center">Search By Name </label>
+    <div class="input-group mb-3 p-2">
+      <input type="text" class="form-control" placeholder="Search By Name" aria-label="Search By Name" aria-describedby="button-addon2"
+        formControlName="name" id="name">
+      <reusable-button-component [btnText]="'Search'" (click)="submit()" [disabled]="!inputsForm.get('name')?.valid"></reusable-button-component>    
+    </div>
+  
+    <label for="cpf" class="form-label text-center">Search By Cpf </label>
+    <div class="input-group mb-2 p-2">
+      <input type="text" class="form-control" placeholder="Search By Cpf" aria-label="Search By Cpf" aria-describedby="button-addon2"
+        formControlName="cpf" mask="000.000.000-00" id="cpf">
+      <reusable-button-component [btnText]="'Search'" (click)="submit()" [disabled]="!inputsForm.get('cpf')?.valid"></reusable-button-component>    
+    </div>
+
+    <label for="cpf" class="form-label text-center">Search Laboratory</label>
+    <div class="input-group mb-2 p-2">
+      <input type="text" class="form-control" placeholder="Search Laboratory" aria-label="Search By Laboratory" aria-describedby="button-addon2"
+        formControlName="laboratory" id="laboratory">
+      <reusable-button-component [btnText]="'Search'" (click)="submit()" [disabled]="!inputsForm.get('laboratory')?.valid"></reusable-button-component>    
+    </div>
+  </div>

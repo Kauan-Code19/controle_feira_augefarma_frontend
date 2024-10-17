@@ -42,4 +42,8 @@ export class PharmacyRepresentativeService {
     // Send a GET request to retrieve the badge as a blob and return the observable
     return this.http.get(url, { responseType: 'blob' });
   }
+  
+  deletePharmacyRepresentative(pharmacyRepresentativeId: number) : Observable<void> {
+    return this.http.delete<void>(`${this.endpointPharmacyRepresentativeUrl}/${pharmacyRepresentativeId}`)
+  }
 }

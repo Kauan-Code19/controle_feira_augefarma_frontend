@@ -42,4 +42,8 @@ export class LaboratoryMemberService {
     // Send a GET request to generate the badge and return the observable of the response as a Blob
     return this.http.get(url, { responseType: 'blob' });
   }
+
+  deleteLaboratoryMember(laboratoryMemberId: number) : Observable<void> {
+    return this.http.delete<void>(`${this.endpointLaboratyMemberUrl}/${laboratoryMemberId}`)
+  }
 }
