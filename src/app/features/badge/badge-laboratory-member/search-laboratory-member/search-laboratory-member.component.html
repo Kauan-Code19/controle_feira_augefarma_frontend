@@ -1,15 +1,15 @@
 <div [formGroup]="inputsForm" class="d-flex flex-column p-1">
-    <label for="name" class="form-label text-center">Search By Name Laboratory Member </label>
+    <label for="name" class="form-label text-center">Buscar Pelo o Nome</label>
     <div class="input-group mb-3 p-2">
-      <input type="text" class="form-control" placeholder="Search By Name" aria-label="Search By Name Laboratory Member" aria-describedby="button-addon2"
+      <input type="text" class="form-control" placeholder="Buscar Pelo o Nome" aria-label="Search By Name Laboratory Member" aria-describedby="button-addon2"
         formControlName="name" id="name">
-      <reusable-button-component [btnText]="'Search'" (click)="submit()" [disabled]="!inputsForm.get('name')?.valid"></reusable-button-component>    
+      <reusable-button-component [btnText]="'Buscar'" (click)="submit()" [disabled]="!inputsForm.get('name')?.valid"></reusable-button-component>    
     </div>
   
-    <label for="cpf" class="form-label text-center">Search By Cpf Laboratory Member </label>
+    <label for="cpf" class="form-label text-center">Buscar Pelo o CPF</label>
     <div class="input-group mb-2 p-2">
-      <input type="text" class="form-control" placeholder="Search By Cpf" aria-label="Search By Cpf Laboratory Member" aria-describedby="button-addon2"
+      <input type="text" class="form-control" placeholder="Buscar Pelo o CPF" aria-label="Search By Cpf Laboratory Member" aria-describedby="button-addon2"
         formControlName="cpf" mask="000.000.000-00" id="cpf">
-      <reusable-button-component [btnText]="'Search'" (click)="submit()" [disabled]="!inputsForm.get('cpf')?.valid"></reusable-button-component>    
+      <reusable-button-component [btnText]="'Buscar'" (click)="submit()" [disabled]="!inputsForm.get('cpf')?.valid"></reusable-button-component>    
     </div>
 </div>

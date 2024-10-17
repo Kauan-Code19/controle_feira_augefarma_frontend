@@ -15,7 +15,7 @@ export class ButtonSendDataComponent {
   @Input() disabled: boolean = false
 
   // Input property to define the button text
-  @Input() btnText: string = "Register"
+  @Input() btnText: string = "Registrar"
 
   // Method to emit the submit event
   submit(): void {

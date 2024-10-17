@@ -88,15 +88,15 @@ export class FormPharmacyRepresentativeComponent {
         this.inputsForm.value.corporateReason,
       ).subscribe({
         next: (response) => {
-          // Alert the user that the pharmacy representative has been registered successfully
-          alert(`${response.name} registered successfully!`);
+          // Alert the user that the pharmacy representative has been registrado com sucesso
+          alert(`${response.name} registrado com sucesso!`);
 
           // Navigate to the pharmacy representative badge generation page after successful registration
           this.router.navigateByUrl("/generate-badge/pharmacy-representative");
         },
         error() {
           // Alert the user if the CPF is already registered
-          alert(`CPF already registered`);
+          alert(`CPF já registrado`);
         },
       });
     }
