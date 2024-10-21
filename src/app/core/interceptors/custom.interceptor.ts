@@ -4,8 +4,8 @@ import { Router } from '@angular/router'
 
 export const customInterceptor: HttpInterceptorFn = (req, next) => {
   const router = inject(Router)
-  const token = localStorage.getItem("token")
-  const tokenExpiration = localStorage.getItem("tokenExpiration")
+  const token = sessionStorage.getItem("token")
+  const tokenExpiration = sessionStorage.getItem("tokenExpiration")
 
   let cloneAuthenticationReq = req
 
@@ -26,9 +26,9 @@ export const customInterceptor: HttpInterceptorFn = (req, next) => {
     }
   }
 
-  // If the token is missing or expired, clear localStorage and redirect to login
-  localStorage.removeItem("token")
-  localStorage.removeItem("tokenExpiration")
+  // If the token is missing or expired, clear sessionStorage and redirect to login
+  sessionStorage.removeItem("token")
+  sessionStorage.removeItem("tokenExpiration")
   router.navigateByUrl("/login")
 
   return next(req) // Return the original request (optional based on redirection logic)

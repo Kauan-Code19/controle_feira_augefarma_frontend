@@ -5,7 +5,8 @@ import { PharmacyRepresentativeResponse } from '../../../interfaces/pharmacy_rep
 import { EntitiesListResponse } from '../../../interfaces/socket/entities-list-response'
 import { isPlatformBrowser } from '@angular/common'
 import { LaboratoryMemberResponse } from '../../../interfaces/laboratory/laboratory-member-response'
-import { brokerURL } from '../../../../environments/environment.development'
+import { brokerURL } from '../../../../environments/environment'
+
 
 @Injectable({
   providedIn: 'root'

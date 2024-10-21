@@ -19,9 +19,9 @@ export class NavigationBarComponent {
 
   // Logout function to remove token and redirect to login page
   logout(): void {
-    // Remove token and token expiration from localStorage
-    localStorage.removeItem("token")
-    localStorage.removeItem("tokenExpiration")
+    // Remove token and token expiration from sessionStorage
+    sessionStorage.removeItem("token")
+    sessionStorage.removeItem("tokenExpiration")
 
     // Redirect to login page
     this.router.navigate(['/login'])
