@@ -5,7 +5,7 @@ import { PharmacyRepresentativeResponse } from '../../../interfaces/pharmacy_rep
 import { EntitiesListResponse } from '../../../interfaces/socket/entities-list-response'
 import { isPlatformBrowser } from '@angular/common'
 import { LaboratoryMemberResponse } from '../../../interfaces/laboratory/laboratory-member-response'
-import { brokerURL } from '../../../../environments/environment'
+import { environment } from '../../../../environments/environment'
 
 
 @Injectable({
@@ -25,7 +25,7 @@ export class StompService implements OnDestroy {
     if (isPlatformBrowser(this.platformId)) {
       // Initialize the STOMP client with configuration
       this.client = new Client({
-        brokerURL: brokerURL, // URL for the STOMP broker
+        brokerURL: environment.brokerURL, // URL for the STOMP broker
         connectHeaders: {}, // Headers for connection
         reconnectDelay: 5000, // Delay before reconnecting
         heartbeatIncoming: 4000, // Incoming heartbeat interval

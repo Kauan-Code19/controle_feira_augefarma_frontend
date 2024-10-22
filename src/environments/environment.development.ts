@@ -1,13 +1,11 @@
 export const environment = {
     production: false,
-    apiUrl: '',
+    apiUrl: 'http://localhost:8080',
+    brokerURL: 'ws://localhost:8080/realtime'
 }
 
-let brokerUrlString = ''
 
-// if (typeof window !== 'undefined') {
-//     environment.apiUrl = `http://${window.location.hostname}:8080`
-//     brokerUrlString = `ws://${window.location.hostname}:8080/realtime`
-// }
-
-export const brokerURL = brokerUrlString
+if (typeof window !== 'undefined') {
+    environment.apiUrl = `http://${window.location.hostname}:8080`
+    environment.brokerURL = `ws://${window.location.hostname}:8080/realtime`
+}
