@@ -4,7 +4,7 @@ import { Router } from '@angular/router'
 
 export const customInterceptor: HttpInterceptorFn = (req, next) => {
   const router = inject(Router)
-  const token = sessionStorage.getItem("token")
+  const token = sessionStorage.getItem("token") // no momento não funciona com verificação de browser
   const tokenExpiration = sessionStorage.getItem("tokenExpiration")
 
   let cloneAuthenticationReq = req
