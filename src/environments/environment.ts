@@ -1,5 +1,5 @@
 export const environment = {
     production: true,
-    apiUrl: process.env['apiUrl'],
-    brokerURL: process.env['brokerURL']
+    apiUrl: 'https://api.grupoaugefarma.com.br',
+    brokerURL: 'wss://api.grupoaugefarma.com.br/realtime'
 }
