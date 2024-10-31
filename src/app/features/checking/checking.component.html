@@ -1,4 +1,4 @@
-<div *ngIf="isEventSegmentParty()" class="container-fluid d-flex justify-content-center align-items-center background flex-column flex-grow-1">
+<div *ngIf="!isEventSegmentParty()" class="container-fluid d-flex justify-content-center align-items-center background flex-column flex-grow-1">
   <div class="modal" tabindex="-1" [ngClass]="{'show': !selectedOption}" [style.display]="!selectedOption ? 'block' : 'none'">
       <div class="modal-dialog" role="document">
         <div class="modal-content">
@@ -24,7 +24,7 @@
   <form-checking-component (manualCpf)="sendCpfToBackend($event)"></form-checking-component>
 </div>
 
-<div class="container-fluid d-flex justify-content-center align-items-center background flex-column flex-grow-1">
+<div *ngIf="isEventSegmentParty()" class="container-fluid d-flex justify-content-center align-items-center background flex-column flex-grow-1">
   <h1 class="text-center p-2"> Checar</h1>
   <form-checking-component (manualCpf)="sendCpfToBackend($event)"></form-checking-component>
 </div>
