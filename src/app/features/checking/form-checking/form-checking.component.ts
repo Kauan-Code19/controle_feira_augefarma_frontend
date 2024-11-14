@@ -1,13 +1,13 @@
 import { Component, EventEmitter, Output } from '@angular/core'
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms'
 import { Router } from '@angular/router'
-import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask'
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask'
 import { ReusableButtonComponent } from '../../../shared/components/buttons/reusable-button/reusable-button.component'
 
 @Component({
   selector: 'form-checking-component',
   standalone: true,
-  imports: [ReactiveFormsModule, NgxMaskDirective, NgxMaskPipe, ReusableButtonComponent],
+  imports: [ReactiveFormsModule, NgxMaskDirective, ReusableButtonComponent],
   providers: [Router, provideNgxMask(),],
   templateUrl: './form-checking.component.html',
   styleUrl: './form-checking.component.scss'
@@ -47,6 +47,8 @@ export class FormCheckingComponent {
 
   // Method to emit the current CPF value
   emitManualCpf() {
-    this.manualCpf.emit(this.inputsForm.value.cpf); // Emit the current CPF value
+    if (this.inputsForm.valid) {
+      this.manualCpf.emit(this.inputsForm.value.cpf); // Emit the current CPF value 
+    }
   }
 }

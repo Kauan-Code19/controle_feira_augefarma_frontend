@@ -1,14 +1,14 @@
 import { Component } from '@angular/core'
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms'
 import { Router } from '@angular/router'
-import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask'
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask'
 import { LaboratoryMemberService } from '../../../../shared/services/laboratory/laboratory_member/laboratory-member.service'
 import { ButtonSendDataComponent } from '../../../../shared/components/buttons/button-send-data/button-send-data.component'
 
 @Component({
   selector: 'form-laboratory-member-component',
   standalone: true,
-  imports: [ButtonSendDataComponent, ReactiveFormsModule, NgxMaskDirective, NgxMaskPipe],
+  imports: [ButtonSendDataComponent, ReactiveFormsModule, NgxMaskDirective],
   providers: [Router, provideNgxMask(), LaboratoryMemberService],
   templateUrl: './form-laboratory-member.component.html',
   styleUrl: './form-laboratory-member.component.scss'

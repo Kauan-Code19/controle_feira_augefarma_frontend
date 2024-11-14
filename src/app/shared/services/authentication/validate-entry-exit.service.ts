@@ -22,10 +22,11 @@ export class ValidateEntryExitService {
   }
 
   // Method to validate exit with CPF
-  validateExit(cpf: string): Observable<any> {
+  validateExit(cpf: string, eventSegment: any): Observable<any> {
     const url = `${this.endpointValidateUrl}/exit`; // Construct the URL for exit validation
+    const params = new HttpParams().set('eventSegment', eventSegment); 
 
     // Send a POST request to validate exit and return the observable of the response
-    return this.http.post<any>(url, { cpf });
+    return this.http.post<any>(url, { cpf }, { params });
   }
 }

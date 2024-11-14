@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from '../../../../environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { WristbandsResponse } from '../../../interfaces/authentication/wristbands-response';
 
 @Injectable({
   providedIn: 'root'
@@ -15,8 +16,8 @@ export class WristBandsService {
   constructor(private http: HttpClient) { }
 
   // Method to check the delivery status of a wristband with the given CPF
-  checkDeliveryOfWristband(cpf: string): Observable<any> {
+  checkDeliveryOfWristband(cpf: string): Observable<WristbandsResponse> {
     // Send a POST request to check wristband delivery and return the observable of the response
-    return this.http.post<any>(this.endpointAccessPartyUrl, { cpf });
+    return this.http.post<WristbandsResponse>(this.endpointAccessPartyUrl, { cpf });
   }
 }
