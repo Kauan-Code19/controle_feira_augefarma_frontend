@@ -1,14 +1,14 @@
 import { Component } from '@angular/core'
 import { FormGroup, FormControl, Validators, ReactiveFormsModule } from '@angular/forms'
 import { Router } from '@angular/router'
-import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask'
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask'
 import { PharmacyRepresentativeService } from '../../../../shared/services/pharmacyRepresentative/pharmacy-representative.service'
 import { ButtonSendDataComponent } from '../../../../shared/components/buttons/button-send-data/button-send-data.component'
 
 @Component({
   selector: 'form-pharmacy-representative-component',
   standalone: true,
-  imports: [ButtonSendDataComponent, ReactiveFormsModule, NgxMaskDirective, NgxMaskPipe],
+  imports: [ButtonSendDataComponent, ReactiveFormsModule, NgxMaskDirective],
   providers: [Router, provideNgxMask(), PharmacyRepresentativeService],
   templateUrl: './form-pharmacy-representative.component.html',
   styleUrl: './form-pharmacy-representative.component.scss'

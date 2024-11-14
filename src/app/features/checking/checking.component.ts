@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common'
-import { Component, OnInit } from '@angular/core'
+import { Component, EventEmitter, OnInit, Output } from '@angular/core'
 import { WebcamModule } from 'ngx-webcam'
 import { FormCheckingComponent } from "./form-checking/form-checking.component"
 import { ActivatedRoute, RouterModule } from '@angular/router'
@@ -7,11 +7,13 @@ import { ValidateEntryExitService } from '../../shared/services/authentication/v
 import { EventSegment } from '../../shared/enums/event-segment'
 import { ScannerQrCodeComponent } from './scanner-qrcode/scanner-qrcode'
 import { WristBandsService } from '../../shared/services/authorization/wrist-bands.service'
+import { WristbandsResponse } from '../../interfaces/authentication/wristbands-response'
+import { AccordionWristbandsComponent } from "./accordion-wristbands/accordion-wristbands.component";
 
 @Component({
   selector: 'checking-component',
   standalone: true,
-  imports: [WebcamModule, CommonModule, FormCheckingComponent, RouterModule, ScannerQrCodeComponent],
+  imports: [WebcamModule, CommonModule, FormCheckingComponent, RouterModule, ScannerQrCodeComponent, AccordionWristbandsComponent],
   providers: [ValidateEntryExitService],
   templateUrl: './checking.component.html',
   styleUrl: './checking.component.scss'
@@ -19,6 +21,7 @@ import { WristBandsService } from '../../shared/services/authorization/wrist-ban
 export class CheckingComponent implements OnInit {
   selectedOption: string | null = null; // Holds the selected option for check-in/check-out
   eventSegment: EventSegment | null = null; // Holds the current event segment
+  wristbandsReponse: WristbandsResponse | undefined;
 
   constructor(
     private route: ActivatedRoute,
@@ -39,6 +42,8 @@ export class CheckingComponent implements OnInit {
       
         // Assign the enum value to the eventSegment property
         this.eventSegment = enumValue
+
+        this.defineSelectOption(this.eventSegment)
       }
     });
   }
@@ -48,9 +53,14 @@ export class CheckingComponent implements OnInit {
     return this.eventSegment == EventSegment.Party
   }
 
-  // Method to select an option (check-in or check-out)
-  selectOption(option: string): void {
-    this.selectedOption = option // Set the selected option
+  defineSelectOption(option: string): void {
+    if (option == EventSegment.Fair) {
+      this.selectedOption = 'checkin'
+    }
+
+    if (option == EventSegment.Buffet) {
+      this.selectedOption = 'checkout'
+    }
   }
 
   // Method to send CPF to the backend based on the selected option and event segment
@@ -68,7 +78,7 @@ export class CheckingComponent implements OnInit {
     // If check-out is selected and an event segment is available
     if (this.selectedOption === 'checkout' && this.eventSegment != null) {
       // Validate exit by sending CPF to the service
-      this.validateEntryExitService.validateExit(cpf).subscribe({
+      this.validateEntryExitService.validateExit(cpf, this.eventSegment.toUpperCase()).subscribe({
         next(response) {
           alert(response.message) // Alert the response message
         },
@@ -78,10 +88,9 @@ export class CheckingComponent implements OnInit {
     // If the event segment is for the party
     if (this.eventSegment == EventSegment.Party) {
       // Check the delivery status of the wristband by sending CPF to the service
-      this.wristbandsService.checkDeliveryOfWristband(cpf).subscribe({
-          next(response) {
-              alert(response.message); // Alert the response message
-          },
+      this.wristbandsService.checkDeliveryOfWristband(cpf)
+      .subscribe(result => {
+        this.wristbandsReponse = result
       });
     }
   }

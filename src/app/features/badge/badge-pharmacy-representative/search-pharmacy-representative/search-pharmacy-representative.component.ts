@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core'
 import { FormGroup, FormControl, Validators, ReactiveFormsModule, ValidatorFn, AbstractControl, ValidationErrors } from '@angular/forms'
 import { Router } from '@angular/router'
-import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask'
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask'
 import { PharmacyRepresentativeService } from '../../../../shared/services/pharmacyRepresentative/pharmacy-representative.service'
 import { PharmacyRepresentativeResponse } from '../../../../interfaces/pharmacy_representative/pharmacy-representative-response'
 import { ReusableButtonComponent } from "../../../../shared/components/buttons/reusable-button/reusable-button.component"
@@ -9,7 +9,7 @@ import { ReusableButtonComponent } from "../../../../shared/components/buttons/r
 @Component({
   selector: 'search-pharmacy-representative-component',
   standalone: true,
-  imports: [ReactiveFormsModule, NgxMaskDirective, NgxMaskPipe, ReusableButtonComponent],
+  imports: [ReactiveFormsModule, NgxMaskDirective, ReusableButtonComponent],
   providers: [Router, provideNgxMask(), PharmacyRepresentativeService],
   templateUrl: './search-pharmacy-representative.component.html',
   styleUrl: './search-pharmacy-representative.component.scss'
@@ -74,7 +74,7 @@ export class SearchPharmacyRepresentativeComponent {
     }
   
     // If only CPF is provided, fetch pharmacy representative by CPF
-    if (cpf !== '') {
+    if (cpf !== '' && this.inputsForm.get('cpf')?.valid) {
       this.pharmacyRepresentativeService.getPharmacyRepresentative(cpf)
         .subscribe(results => {
           this.results.emit(results); // Emit the results
@@ -83,7 +83,7 @@ export class SearchPharmacyRepresentativeComponent {
     }
   
     // If only name is provided, fetch pharmacy representative by name
-    if (name !== '') {
+    if (name !== '' && this.inputsForm.get('name')?.valid) {
       this.pharmacyRepresentativeService.getPharmacyRepresentative(name)
         .subscribe(results => {
           this.results.emit(results); // Emit the results
