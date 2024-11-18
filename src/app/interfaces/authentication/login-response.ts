@@ -1,3 +1,6 @@
+import { Role } from "../../shared/enums/role";
+
 export interface LoginResponse {
-    token: string
+    token: string,
+    role: Role
 }
