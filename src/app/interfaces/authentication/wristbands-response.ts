@@ -2,6 +2,6 @@ export interface WristbandsResponse {
     id: number,
     name: string,
     cpf: string,
-    lastCheckInFair: string | null,
+    checkInsFair: string[] | null,
     corporateReason: string
 }

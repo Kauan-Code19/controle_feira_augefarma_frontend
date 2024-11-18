@@ -20,8 +20,16 @@
         <div class="accordion-body text-center">
           <p><strong>CPF:</strong> {{ WristbandsResult?.cpf }}</p>
           <p><strong>Razão Social:</strong> {{ WristbandsResult?.corporateReason }}</p>
-          <p *ngIf="WristbandsResult?.lastCheckInFair != null"><strong>Último Registro De Check-in:</strong> {{ WristbandsResult?.lastCheckInFair }}</p>
-          <p *ngIf="WristbandsResult?.lastCheckInFair == null"><strong>Último Registro De Check-in:</strong> Vazio </p>
+          <ng-container *ngIf="WristbandsResult?.checkInsFair?.length; else noCheckIns">
+            <p><strong>Registros De Check-ins:</strong></p>
+            <p *ngFor="let checkIn of WristbandsResult?.checkInsFair?.slice()?.reverse()">
+              <strong>-</strong> {{ checkIn }}
+            </p>
+          </ng-container>
+          
+          <ng-template #noCheckIns>
+            <p><strong>Registro De Check-ins:</strong> Vazio</p>
+          </ng-template>
         </div>
       </div>
     </div>
