@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core'
 import { environment } from '../../../../environments/environment'
 import { Observable } from 'rxjs'
 import { LoginResponse } from '../../../interfaces/authentication/login-response'
+import { Role } from '../../enums/role'
 
 @Injectable({
   providedIn: 'root'
@@ -37,5 +38,15 @@ export class AuthenticationService {
     }
 
     return false
+  }
+
+  isRoleLevelTwo(): boolean {
+    const role = sessionStorage.getItem("role")
+
+    if (role == Role.LEVEL_ONE) {
+      return false
+    }
+
+    return true
   }
 }

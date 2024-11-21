@@ -3,13 +3,13 @@ import { LaboratoryMemberResponse } from '../../../../interfaces/laboratory/labo
 import { FormGroup, FormControl, Validators, ValidatorFn, AbstractControl, ValidationErrors, ReactiveFormsModule } from '@angular/forms'
 import { LaboratoryMemberService } from '../../../../shared/services/laboratory/laboratory_member/laboratory-member.service'
 import { Router } from '@angular/router'
-import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask'
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask'
 import { ReusableButtonComponent } from '../../../../shared/components/buttons/reusable-button/reusable-button.component'
 
 @Component({
   selector: 'search-laboratory-member-component',
   standalone: true,
-  imports: [ReactiveFormsModule, NgxMaskDirective, NgxMaskPipe, ReusableButtonComponent],
+  imports: [ReactiveFormsModule, NgxMaskDirective, ReusableButtonComponent],
   providers: [Router, provideNgxMask(), LaboratoryMemberService],
   templateUrl: './search-laboratory-member.component.html',
   styleUrl: './search-laboratory-member.component.scss'

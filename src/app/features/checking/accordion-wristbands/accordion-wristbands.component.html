@@ -1,0 +1,36 @@
+<div class="accordion accordion-flush" id="accordionFlushExample">
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button 
+          class="accordion-button collapsed" 
+          type="button" 
+          [attr.data-bs-toggle]="'collapse'" 
+          [attr.data-bs-target]="'#flush-collapse'" 
+          aria-expanded="false" 
+          [attr.aria-controls]="'flush-collapse'"
+        >
+          {{ WristbandsResult?.name }} (ID: {{ WristbandsResult?.id }})
+        </button>
+      </h2>
+      <div 
+        [id]="'flush-collapse'" 
+        class="accordion-collapse collapse" 
+        [attr.data-bs-parent]="'#accordionFlushExample'"
+      >
+        <div class="accordion-body text-center">
+          <p><strong>CPF:</strong> {{ WristbandsResult?.cpf }}</p>
+          <p><strong>Razão Social:</strong> {{ WristbandsResult?.corporateReason }}</p>
+          <ng-container *ngIf="WristbandsResult?.checkInsFair?.length; else noCheckIns">
+            <p><strong>Registros De Check-ins:</strong></p>
+            <p *ngFor="let checkIn of WristbandsResult?.checkInsFair?.slice()?.reverse()">
+              <strong>-</strong> {{ checkIn }}
+            </p>
+          </ng-container>
+          
+          <ng-template #noCheckIns>
+            <p><strong>Registro De Check-ins:</strong> Vazio</p>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+</div>

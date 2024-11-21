@@ -15,7 +15,8 @@ export const errorInterceptor: HttpInterceptorFn = (req, next) => {
       }
 
       // Handle server-side error
-      errorMsg = `Server Error: ${error.status} - ${error.error.message}`
+      errorMsg = `Server Error: ${error.status} - ${error.error.error}`
+      
       // Show the error in alert
       alert(errorMsg) // Use the alert service to show the error message
 

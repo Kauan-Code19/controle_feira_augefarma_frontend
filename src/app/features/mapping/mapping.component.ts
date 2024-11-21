@@ -16,8 +16,6 @@ import { LaboratoryMemberResponse } from '../../interfaces/laboratory/laboratory
 export class MappingComponent implements OnInit, OnDestroy {
   pharmacyRepresentatives: PharmacyRepresentativeResponse[] = []; // Array to hold pharmacy representatives
   laboratoryMembers: LaboratoryMemberResponse[] = []; // Array to hold laboratory members
-  currentDateTime: string = new Date().toLocaleString(); // Current date and time in local string format
-  private intervalId: any; // Variable to hold the interval ID for updating the date and time
 
   private subscriptions: Subscription[] = []; // Array to hold subscriptions for cleanup
 
@@ -38,13 +36,6 @@ export class MappingComponent implements OnInit, OnDestroy {
         this.laboratoryMembers = laboratoryMembers; // Update the laboratoryMembers array with new data
       })
     );
-
-    // Run the interval to update the current date and time outside of Angular's zone
-    this.ngZone.runOutsideAngular(() => {
-      this.intervalId = setInterval(() => {
-        this.updateDateTime(); // Call the method to update the current date and time every second
-      }, 1000);
-    });
   }
 
   copyAllRepresentativesData(): void {
@@ -77,17 +68,8 @@ export class MappingComponent implements OnInit, OnDestroy {
     }
   }
 
-  // Method to update the current date and time
-  private updateDateTime(): void {
-    this.currentDateTime = new Date().toLocaleString(); // Get the current date and time
-    this.cdr.detectChanges(); // Manually trigger change detection to update the view
-  }
-
   // Lifecycle hook that is called when the component is destroyed
   ngOnDestroy(): void {
     this.subscriptions.forEach(sub => sub.unsubscribe()); // Unsubscribe from all subscriptions to prevent memory leaks
-    if (this.intervalId) {
-      clearInterval(this.intervalId); // Clear the interval to stop updating the date and time
-    }
   }
 }

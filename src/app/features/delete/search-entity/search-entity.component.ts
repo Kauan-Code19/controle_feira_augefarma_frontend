@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, ReactiveFormsModule, ValidationErrors, ValidatorFn, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { NgxMaskDirective, NgxMaskPipe, provideNgxMask } from 'ngx-mask';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { PharmacyRepresentativeResponse } from '../../../interfaces/pharmacy_representative/pharmacy-representative-response';
 import { ReusableButtonComponent } from '../../../shared/components/buttons/reusable-button/reusable-button.component';
 import { PharmacyRepresentativeService } from '../../../shared/services/pharmacyRepresentative/pharmacy-representative.service';
@@ -14,7 +14,7 @@ import { LaboratoryResponse } from '../../../interfaces/laboratory/laboratory-re
 @Component({
   selector: 'search-entity-component',
   standalone: true,
-  imports: [ReactiveFormsModule, NgxMaskDirective, NgxMaskPipe, ReusableButtonComponent],
+  imports: [ReactiveFormsModule, NgxMaskDirective, ReusableButtonComponent],
   providers: [Router, provideNgxMask(), PharmacyRepresentativeService, LaboratoryMemberService, LaboratoryService],
   templateUrl: './search-entity.component.html',
   styleUrl: './search-entity.component.scss'
@@ -92,8 +92,9 @@ export class SearchEntityComponent {
     if (filledFields >= 2) {
       return;
     }
-  
-    if (name !== '') {
+
+    
+    if (name !== '' && this.inputsForm.get('name')?.valid) {
       forkJoin({
         pharmacyRepresentative: this.pharmacyRepresentativeService.getPharmacyRepresentative(name).pipe(
           catchError(() => of([])) // Retorna array vazio se falhar
@@ -112,7 +113,7 @@ export class SearchEntityComponent {
       });
     }
 
-    if (cpf !== '') {
+    if (cpf !== '' && this.inputsForm.get('cpf')?.valid) {
       forkJoin({
         pharmacyRepresentative: this.pharmacyRepresentativeService.getPharmacyRepresentative(cpf).pipe(
           catchError(() => of([])) // Retorna array vazio se falhar
@@ -131,7 +132,7 @@ export class SearchEntityComponent {
       });
     }
 
-    if (laboratory !== '') {
+    if (laboratory !== '' && this.inputsForm.get('laboratory')?.valid) {
       this.laboratoryService.getLaboratoryByCorporateReason(laboratory).subscribe({
         next: (laboratory) => {
           this.event.emit([laboratory]);

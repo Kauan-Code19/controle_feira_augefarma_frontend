@@ -44,6 +44,7 @@ export class FormLoginComponent {
             // Store the token and expiration date in local storage
             sessionStorage.setItem("token", token);
             sessionStorage.setItem("tokenExpiration", expirationDate.toString());
+            sessionStorage.setItem("role", response.role);
 
             // Navigate to the mapping page after successful login
             this.router.navigateByUrl("/mapping");

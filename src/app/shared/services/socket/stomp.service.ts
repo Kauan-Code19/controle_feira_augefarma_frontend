@@ -23,52 +23,50 @@ export class StompService implements OnDestroy {
   constructor(@Inject(PLATFORM_ID) private platformId: Object) {
     // Check if running in the browser
     if (isPlatformBrowser(this.platformId)) {
-      // Initialize the STOMP client with configuration
-      this.client = new Client({
-        brokerURL: environment.brokerURL, // URL for the STOMP broker
-        connectHeaders: {}, // Headers for connection
-        reconnectDelay: 5000, // Delay before reconnecting
-        heartbeatIncoming: 4000, // Incoming heartbeat interval
-        heartbeatOutgoing: 4000, // Outgoing heartbeat interval
-        onConnect: (frame) => {
-          // Publish a message to get initial data on connection
-          this.client!.publish({ destination: '/app/get-initial-data', body: '' });
-
-          // Subscribe to the '/topic/realtime' for updates
-          this.client!.subscribe('/topic/realtime', (message: Message) => {
-            try {
-              const data: EntitiesListResponse = JSON.parse(message.body); // Parse the incoming message
-
-              // Update pharmacy representatives if data is present
-              if (data.pharmacyRepresentatives) {
-                this.pharmacyRepresentativeSubject.next(data.pharmacyRepresentatives);
-              }
-
-              // Update laboratory members if data is present
-              if (data.laboratoryMembers) {
-                this.laboratoryMemberSubject.next(data.laboratoryMembers);
-              }
-            } catch (error) {
-              console.error('Error parsing message body:', error, message.body); // Log any parsing errors
-            }
-          });
-        },
-
-        onStompError: (error) => {
-          console.error('STOMP error: ', error); // Log STOMP errors
-        },
-        
-        onWebSocketClose: (event) => {
-          console.log('WebSocket closed: ', event); // Log when WebSocket closes
-        }
-      });
-
-      this.client.activate(); // Activate the STOMP client
+      this.initializeStompClient();
     }
   }
 
+  private initializeStompClient() {
+    this.client = new Client({
+      brokerURL: environment.brokerURL,
+      connectHeaders: {},
+      reconnectDelay: 5000,
+      heartbeatIncoming: 50000,
+      heartbeatOutgoing: 50000,
+      onConnect: () => {
+        // Primeiro, inscreva-se no tópico para ouvir a resposta
+        this.client!.subscribe('/topic/realtime', (message: Message) => {
+          try {
+            const data: EntitiesListResponse = JSON.parse(message.body);
+
+            // Verifica e atribui os dados iniciais
+            if (data.pharmacyRepresentatives) {
+              this.pharmacyRepresentativeSubject.next(data.pharmacyRepresentatives);
+            }
+            if (data.laboratoryMembers) {
+              this.laboratoryMemberSubject.next(data.laboratoryMembers);
+            }
+          } catch (error) {
+            console.error('Erro ao processar mensagem:', error, message.body);
+          }
+        });
+
+        // Depois de se inscrever, solicite os dados iniciais
+        this.client!.publish({ destination: '/app/get-initial-data', body: '' });
+      },
+      onStompError: (error) => {
+        console.error('Erro STOMP:', error);
+      },
+      onWebSocketClose: (event) => {
+        console.log('WebSocket fechado:', event);
+      }
+    });
+
+    this.client.activate();
+  }
+
   ngOnDestroy() {
-    // Deactivate the STOMP client if it is connected
     if (this.client && this.client.connected) {
       this.client.deactivate();
     }
