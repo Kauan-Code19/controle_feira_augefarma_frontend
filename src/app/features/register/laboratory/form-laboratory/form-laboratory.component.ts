@@ -40,12 +40,7 @@ export class FormLaboratoryComponent {
 
           // Navigate to the laboratory member registration page after successful registration
           this.router.navigateByUrl("/register/laboratory-member");
-        },
-
-        error() {
-          // Alert the user if the CPF is already registered
-          alert(`laboratorio já registrado`);
-        },
+        }
       });
     }
   }

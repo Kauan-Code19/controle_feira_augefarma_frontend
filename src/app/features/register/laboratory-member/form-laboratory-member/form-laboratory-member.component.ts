@@ -75,11 +75,6 @@ export class FormLaboratoryMemberComponent {
           // Navigate to the laboratory member badge generation page after successful registration
           this.router.navigateByUrl("/generate-badge/laboratory-member");
         },
-
-        error() {
-          // Alert the user if the CPF is already registered
-          alert(`CPF já registrado`);
-        },
       });
     }
   }
