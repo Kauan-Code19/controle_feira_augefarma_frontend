@@ -94,10 +94,6 @@ export class FormPharmacyRepresentativeComponent {
           // Navigate to the pharmacy representative badge generation page after successful registration
           this.router.navigateByUrl("/generate-badge/pharmacy-representative");
         },
-        error() {
-          // Alert the user if the CPF is already registered
-          alert(`CPF já registrado`);
-        },
       });
     }
   }
